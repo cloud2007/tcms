@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<title>{$title|default=C('DEFAUIT_SYSTEM_TITLE')}</title>
+<load href="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/css/reset.css" />
+<load href="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/css/style.css" />
+<load href="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/js/Jquery-1.4.2.min.js" />
+<load href="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/css/frame.css" />
+<load href="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/js/frame.js" />
+</head>
+<body class="showmenu">
+<div class="head">
+	<div class="top">
+		<div class="top_logo"><img src="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/images/admins_top_logo.gif" width="200" height="37" title="{:C('DEFAUIT_SYSTEM_TITLE')}{:C('VERSOIN')}" /></div>
+		<div class="top_link">
+			<ul>
+				<li class="welcome">您好：{$UserInfo['username']}，欢迎使用{:C('DEFAUIT_SYSTEM_TITLE')}{:C('VERSOIN')}</li>
+				<li><a href="{:U('Menu/index')}" target="menu">主菜单</a></li>
+				<li><a href="/" target="_blank">网站主页</a></li>
+				<li><a href="{:U('Login/loginOut')}" target="_top">注销</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="topnav">
+		<div class="menuact"> <a href="javascript:;" id="togglemenu">隐藏菜单</a></div>
+		<div class="sysmsg">
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ul>
+		</div>
+		<div class="scroll"><a href="{:C('DEFAUIT_SYSTEM_TARGET')}" target='_blank'>官方网站</a> </div>
+	</div>
+</div>
+<div class="left">
+	<div class="menu" id="menu">
+		<iframe src="{:U('Menu/index')}" id="menufra" name="menu" frameborder="0"></iframe>
+	</div>
+</div>
+<div class="right">
+	<div class="main">
+		<iframe src="{:U('Home/welcome')}" id="main" name="main" frameborder="0"></iframe>
+	</div>
+</div>
+<script type="text/javascript">
+function AutoScroll(obj) {
+	$(obj).find("ul:first").animate({
+		marginTop: "-27px"
+	}, 500, function () {
+		$(this).css({ marginTop: "0px" }).find("li:first").appendTo(this);
+	});
+}
+$(document).ready(function () {
+	setInterval('AutoScroll(".sysmsg")', 3000);
+});
+</script>
+</body>
+</html>

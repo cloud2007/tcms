@@ -1,0 +1,55 @@
+<include file="Common:header" />
+<div id="win1" class="mini-window" title="温馨提示"
+	style="width: 400px; height: 150px;" showModal="false"
+	showCloseButton="false">
+	<table>
+		<tr>
+			<td>
+				<img src="__PUBLIC__/img/success.png" />
+			</td>
+			<td style="padding: 15px 15px;">
+				<b>{$message}</b>
+				<br />
+				<span id="wait" style="color: red">{:C("AUTO_TURN_PAGE_TIME")}</span>
+				秒后系统自动跳转，无响应请点击
+				<a id="href" href="javascript:void(0)" onclick="gotoPage(0);">这里</a>
+				跳转。
+			</td>
+		</tr>
+	</table>
+</div>
+<include file="Common:footer" />
+<script type="text/javascript">
+	var dialog = "{:I('get.dialog')}";
+	var isLogn = "{$IsLogin}";
+	mini.get("win1").show();
+	var wait = $('#wait').html();
+	var href = '{$jumpUrl}';
+	var interval = null;
+	$().ready(function() {
+		interval = setInterval('gotoPage()', 1000);
+	});
+	function gotoPage(ctime) {
+		var time = ctime == 0 ? ctime : --wait;
+		if (time <= 0) {
+			clearInterval(interval);
+			if (dialog) {
+				try {
+					onCloseMinWin(null, 'close', true);
+				} catch (error) {
+				}
+			} else {
+				if (isLogn) {
+					try {
+						parent.removeTab();
+					} catch (error) {
+					}
+				} else {
+					location.href = href;
+				}
+			}
+		} else {
+			$('#wait').html(time);
+		}
+	}
+</script>

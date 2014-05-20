@@ -1,0 +1,8 @@
+#for rewrite no www domain
+#RewriteCond %{HTTP_HOST} ^tcms.chofn.com [NC]
+#RewriteRule ^(.*)$ http://tcms.chofn.com/$1 [L,R=301]
+#for rewrite no www domain
+
+RewriteEngine on
+RewriteCond $1 !^(index\.php|Public)
+RewriteRule ^(.*)$ index.php/$1 [L]

@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<title>{$title|default=C('DEFAUIT_SYSTEM_TITLE')}</title>
+<load href="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/css/reset.css" />
+<load href="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/css/base.css" />
+<load href="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/css/menu.css" />
+<load href="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/js/jquery-1.4.2.min.js" />
+<load href="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/js/leftmenu.js" />
+<base target="main" />
+</head>
+<body target="main" onLoad="CheckOpenMenu();">
+<table width="180" align="left" border='0' cellspacing='0' cellpadding='0'>
+	<tr>
+		<td valign='top' width='20'></td>
+		<td width='160' id='mainct' valign="top">
+			<foreach name="MenuList" item="val" key="key">
+			<dl class='bitem2' id="sunitems{$key}">
+				<dt onClick='showHide("items{$key}")'><b>{$val['lm_name']}</b></dt>
+				<dd style='display:none' class='sitem' id='items{$key}'>
+					<ul class='sitemu'>
+						<foreach name="val['son']" item="v">
+							<li><a href="{:U($v['action'].'/'.$v['function'],array('col'=>$v['id'],'dat'=>$v['database']))}" target="main">{$v['menu_name']}</a>
+								<equal name="v['manage']" value="1">| <a href="{:U($v['action'].'/index',array('col'=>$v['id'],'dat'=>$v['database']))}" target="main">管理</a></equal>
+							</li>
+						</foreach>
+					</ul>
+				</dd>
+			</dl>
+			</foreach>
+		</td>
+	</tr>
+	<tr>
+		<td valign='top' width='20'></td>
+		<td width='160' valign='top'><img src='__PUBLIC__/{:C("ADMIN_THEME_PATH")}/images/idnbgfoot.gif' /></td>
+	</tr>
+</table>
+</body>
+</html>

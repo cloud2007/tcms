@@ -1,0 +1,19 @@
+@charset "utf-8";
+body{padding:0; margin:0 auto; font-size:12px; font-family:Verdana;background-color: #f8fcff;}
+.title{width:900px; margin:10px auto 20px auto; text-align:left; padding:0 0 0 50px; font-size:24px; color:#FF0000}
+#con{ width:898px; margin-top:20px; border:1px solid #CCCCCC}
+#con ul{ margin:20px;}
+#con ul li{ margin-left: 20px;border-bottom: 1px dashed #dddddd;padding: 5px 0; line-height:30px;}
+#con ul li div{ width:100px; display:inline-block; text-align:right; margin:0 0 0 100px;}
+#con ul li div b{ font-weight:normal; color:#FF0000; margin:0 5px 0 0; font-family:Arial, Helvetica, sans-serif}
+.input-border_pwd{
+	border:1px solid #b8b8b8;
+	width:173px;
+	line-height:20px;
+	font-size:12px;
+	height:20px;
+}
+.btn{border: 1px solid #56AD22;background: #DFF1D4;color: green;padding: 2px 5px;font-size: 14px;font-weight: bold;font-family: 微软雅黑, 黑体;}
+.regform_checktip{ display:inline-block; margin:0 0 0 10px}
+#foot{ width:880px; height:40px; clear:both;background-color: #f6f6f6;color: #909090; padding:10px; border-top:1px solid #EBEBEB;}
+
