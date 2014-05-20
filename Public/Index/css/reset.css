@@ -1,0 +1,50 @@
+@charset "utf-8";
+/*格式化*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{padding:0;margin:0;}   
+fieldset,img {border:0;}   
+address,caption,cite,code,dfn,em,strong,th,var{font-weight:normal;font-style:normal;}   
+ol,ul{list-style:none;}   
+caption,th{text-align:left;}   
+q:before,q:after{content:'';}   
+abbr,acronym{border:0;}
+div{margin:0 auto;}
+li{list-style:outside;list-style:none;}
+.clear{ clear:both; height:0px; overflow:hidden}
+.clearh{ clear:both; height:5px; overflow:hidden}
+.clearH{ clear:both; height:10px; overflow:hidden}
+input, textarea, select { vertical-align:middle; }
+input[type="radio"],input[type="checkbox"]{margin:-4px 0 0 0}
+
+a{ text-decoration:none; color:#666}
+a:hover{ text-decoration:none; color:#666}
+.alt{background:#F7F7F7;}
+.over{background:#FEF3D1;}
+.none{filter:alpha(opacity=0); -moz-opacity:0; -khtml-opacity:0; opacity:0;}
+
+/*form验证 样式*/
+.Validform_checktip{margin-left:10px; color:#FF0000;}
+.Validform_wrong {color: red;padding-left: 20px;white-space: nowrap;background: url(../images/error.png) no-repeat left center;}
+.Validform_right {color: #71b83d;padding-left: 20px;background: url(../images/right.png) no-repeat left center;}
+.Validform_loading{	padding-left:20px;	background:url(../images/onLoad.gif) no-repeat left center;}
+#Validform_msg{color:#7d8289; font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif; width:280px; -webkit-box-shadow:2px 2px 3px #aaa; -moz-box-shadow:2px 2px 3px #aaa; background:#fff; position:absolute; top:0px; right:50px; z-index:99999; display:none;filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#999999'); box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);}
+#Validform_msg .iframe{position:absolute; left:0px; top:-1px; z-index:-1;}
+#Validform_msg .Validform_title{line-height:25px; height:25px; text-align:left; font-weight:bold; padding:0 8px; color:#fff; position:relative; background-color:#999;
+background: -moz-linear-gradient(top, #999, #666 100%); background: -webkit-gradient(linear, 0 0, 0 100%, from(#999), to(#666)); filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#999999', endColorstr='#666666');}
+#Validform_msg a.Validform_close:link,#Validform_msg a.Validform_close:visited{line-height:22px; position:absolute;right:8px;top:0px;color:#fff;text-decoration:none;}
+#Validform_msg a.Validform_close:hover{color:#ccc;}
+#Validform_msg .Validform_info{padding:8px;border:1px solid #bbb; border-top:none; text-align:left;}
+
+/*通用样式*/
+.btn{border-radius:4px;background-color: #2daebf; border:none; color: white; cursor:pointer; font:12px/24px "Courier New",Microsoft Yahei,"宋体";}
+.btn{display: inline-block; position: relative; background: #aaa; padding:2px 8px; /*float: left;*/ color: #fff; text-decoration: none; cursor: pointer; }
+
+.btn.blue { background: #2ae;}
+.btn.green { background: #9d4;}
+.btn.pink { background: #e1a;}
+
+.btn.big {padding:3px 10px; font-size:16px;}
+.btn.small {padding:1px 5px; font-size:9px;}
+
+.btn:hover { background-color: #a00; }
+.btn:active { background-color: #444; }
+.btn[class] {  background-image: url(../images/shade.png); background-position: bottom; }
