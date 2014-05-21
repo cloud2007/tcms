@@ -1,7 +1,9 @@
 <?php
+
 /**
  * 通用函数
  */
+
 namespace Common\Org;
 
 class Util {
@@ -674,7 +676,7 @@ class Util {
 	public static function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 		// 动态密匙长度，相同的明文会生成不同密文就是依靠动态密匙
 		$ckey_length = 4;
-		$key = md5($key ? $key : AUTHCODE_KEY);
+		$key = md5($key ? $key : C('AUTHCODE_KEY'));
 		$keya = md5(substr($key, 0, 16));
 		$keyb = md5(substr($key, 16, 16));
 		$keyc = $ckey_length ? ($operation == 'DECODE' ? substr($string, 0, $ckey_length) : substr(md5(microtime()), -$ckey_length)) : '';

@@ -21,7 +21,7 @@ class CommonController extends \Think\Controller {
 	function LoginOut() {
 		$model = new \Common\Model\UserModel();
 		$model->loginOut;
-		$this->redirect('/Admin/Login');
+		$this->redirect(U('login/index', '', false));
 	}
 
 }

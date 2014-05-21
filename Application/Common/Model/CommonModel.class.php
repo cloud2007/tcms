@@ -11,6 +11,14 @@ namespace Common\Model;
 
 class CommonModel extends \Think\Model {
 
+	function save() {
+		$pk = $this->getPk();
+		if ($this->$pk)
+			parent::save();
+		else
+			parent::add();
+	}
+
 }
 
 ?>

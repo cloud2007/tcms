@@ -19,7 +19,7 @@ class AdminController extends CommonController {
 		$res = $obj->checkLogin();
 		if ($res === false) {
 			$this->loginOut();
-			$this->redirect('/Admin/Login');
+			exit();
 		} else {
 			$this->UserInfo = $res;
 		}

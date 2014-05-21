@@ -11,7 +11,7 @@
 <div style="width:450px;padding:0px;border:1px solid #DADADA; margin:10% auto 0 auto;font:12px/24px Courier New,Microsoft Yahei,宋体;">
 	<div style="padding:6px;font-size:14px;border-bottom:1px solid #DADADA;background:#EEE;"><b>提示信息！</b></div>
 	<div style="height:130px;font-size:10pt;background:#ffffff">
-		<br />{:$error},<font id="time" style="color:red">{:C("AUTO_TURN_PAGE_TIME")}</font>秒后2自动跳转<br /><br />
+		<br />{:$error},<font id="time" style="color:red">{:C("AUTO_TURN_PAGE_TIME")}</font>秒后自动跳转<br /><br />
 		<a style="color:Green; text-decoration:none;" href="{:$jumpUrl}">如果你的浏览器没反应，请点击这里...</a>
 	</div>
 </div>
@@ -20,16 +20,16 @@
 <script type="text/javascript">
 var time = {:C("AUTO_TURN_PAGE_TIME")};
 var url = "{:$jumpUrl}";
-$(function(){gotoPage();})  
+$(function(){gotoPage();})
 function gotoPage(){
 	if(--time>0){
-		$('#time').html(time);  
-		interval = setTimeout("gotoPage()",1000);     
+		$('#time').html(time);
+		interval = setTimeout("gotoPage()",1000);
 	}else{
-		clearInterval(interval);    
+		clearInterval(interval);
 		location.href=url;
-	}     
-}     
+	}
+}
 </script>
 </body>
 </html>

@@ -11,15 +11,26 @@ namespace Common\Model;
 
 class MenuModel extends CommonModel {
 
+	//表名
+	protected $tableName = 'menu';
 	// 自动完成字段
 	protected $_auto = array(
-		array('created','time',1,'function'),
+		array('created', 'time', 1, 'function'),
 	);
 	// 自动验证
 	protected $_validate = array(
-		array('lm_name','require','lm_id不能为空'),
+			//array('lm_id', 'require', '栏目ID不能为空'),
+			//array('lm_name', 'require', '栏目名不能为空'),
+			//array('menu_name', 'require', '菜单名不能为空'),
+			//array('action', 'require', '控制器名不能为空'),
+			//array('function', 'require', '方法名不能为空'),
 	);
 
+	/**
+	 * 创建菜单
+	 * @param type $user
+	 * @return type
+	 */
 	function createMenu($user) {
 		$grantword = explode('|', $user['grantword']);
 		$order = 'sort asc';
@@ -48,6 +59,21 @@ class MenuModel extends CommonModel {
 			}
 		}
 		return $menuList ? $menuList : null;
+	}
+
+	/**
+	 * 查询数据成功后处理allow_field
+	 * @param int $data
+	 * @param type $options
+	 */
+	protected function _after_select(&$data, $options) {
+		foreach ($data as $key => $value) {
+			$data[$key]['allow_field'] = 12;
+		}
+	}
+
+	protected function _after_find(&$result, $options) {
+		$result['allow_field'] = explode('|', $result['allow_field']);
 	}
 
 }

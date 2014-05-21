@@ -5,10 +5,14 @@ return array(
 	'MULTI_MODULE' => TRUE, // 是否允许多模块 如果为false 则必须设置 DEFAULT_MODULE
 	'DEFAULT_MODULE' => 'Home', //默认配置
 
+	/* 模块映射 */
+	//'URL_MODULE_MAP' => array('manager' => 'admin'), //必须小写
+
 	/* SYSTEM COMMON CONFIG */
 	'TMPL_ACTION_ERROR' => 'Common:error', // 正确跳转对应的模板文件
 	'TMPL_ACTION_SUCCESS' => 'Common:success', // 错误跳转对应的模板文件
 	'LOAD_EXT_CONFIG' => 'database,email,data', // 自动加载其他配置文件
+	'AUTHCODE_KEY' => 'www.tcit123.com', //加密狗
 
 	/* SYSTEM DEFAULET CONFIG */
 	'ONLINE_LIMIT' => '999999', // 统计是否在线 超时时间(s)
