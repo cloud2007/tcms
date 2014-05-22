@@ -3,9 +3,10 @@
 	<h2 class="title">菜 单 功 能 管 理</h2>
 	<p>管理导航：<a href="{:U('Core/index')}">菜单管理</a>&nbsp;|&nbsp;<a href="{:U('Core/add')}">添加菜单功能</a></p>
 </div>
-
+<form name="ListForm" id="ListForm" method="post" action="{:U('Core/delete')}">
 <table width="100%" class="content_table">
 	<tr class="title">
+		<td><input type="checkbox" id="checkAll"> 全选</td>
 		<td><b>LM_ID</b></td>
 		<td><b>菜单标题</b></td>
 		<td><b>项目标题</b></td>
@@ -15,24 +16,19 @@
 	</tr>
 	<foreach name="data" item="val">
 	<tr class="content">
-		<td>{$val['lm_id']}</td>
-		<td>{$val['lm_name']}</td>
-		<td>{$val['menu_name']}</td>
-		<td>{:U($val['action'].'/'.$val['function'])}</td>
-		<td>{$val['manage']}</td>
+		<td><input name="id[]" type="checkbox" value="{$val['id']}"></td>
+		<td>{$val['id']}</td>
+		<td>{$val['id']}</td>
+		<td>{$val['id']}</td>
+		<td>{:U($val['id'].'/'.$val['id'])}</td>
+		<td>{$val['id']?'是':'否'}</td>
 		<td><a href="{:U('Core/add',array('id'=>$val['id']))}">修改</a>|<a href="javascript:if (confirm('确定要删除此条信息吗？')) location='{:U('Core/delete',array('id'=>$val['id']))}'">删除</a> </td>
 	</tr>
 	</foreach>
 	<tr class="pages">
-		<td colspan="6"><?php echo $PagerData['linkhtml'];?></td>
+		<td><input name="del" type="button" value="删 除" class="btn blue" /></td>
+		<td colspan="6">{$pagerData['linkhtml']}</td>
 	</tr>
 </table>
-
-<script type="text/javascript">
-$(document).ready(function(){
-  $("tr.content").mouseover(function(){
-      $(this).addClass("over");}).mouseout(function(){
-            $(this).removeClass("over");})
-      $("tr.content:even").addClass("alt");
-});
-</script>
+</form>
+<include file="Common:footer" />

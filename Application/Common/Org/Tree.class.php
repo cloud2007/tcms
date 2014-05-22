@@ -7,7 +7,7 @@
  * @since 2014-3-28 下午5:00:18
  * @copyright CHOFN
  */
-namespace Home\Org;
+namespace Common\Org;
 
 class Tree {
 	/**

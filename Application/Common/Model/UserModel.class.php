@@ -28,7 +28,7 @@ class UserModel extends CommonModel {
 			$this->userID = session(C('SESSION_ID_ADMIN'));
 			$this->userCode = session(C('SESSION_CODE_ADMIN'));
 		}
-		if (@$_COOKIE['userID']) {
+		if ($cookie_userid) {
 			$this->userID = cookie(C('COOKIE_ID_ADMIN'));
 			$this->userCode = cookie(C('COOKIE_CODE_ADMIN'));
 		}

@@ -11,9 +11,11 @@ namespace Admin\Controller;
 
 class AdminController extends CommonController {
 
+	protected $pageSize;
 	protected $UserInfo;
 
 	function _initialize() {
+		$this->pageSize = C('DEFAULT_PAGE_SIZE_20');
 		// 验证是否登录
 		$obj = new \Common\Model\UserModel ();
 		$res = $obj->checkLogin();

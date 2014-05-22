@@ -11,12 +11,12 @@ namespace Common\Model;
 
 class CommonModel extends \Think\Model {
 
-	function save() {
+	function addSave($data = '', $options = array()) {
 		$pk = $this->getPk();
 		if ($this->$pk)
-			parent::save();
+			parent::save($data = '', $options = array());
 		else
-			parent::add();
+			parent::add($data = '', $options = array());
 	}
 
 }

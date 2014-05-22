@@ -15,7 +15,7 @@ class MenuModel extends CommonModel {
 	protected $tableName = 'menu';
 	// 自动完成字段
 	protected $_auto = array(
-		array('created', 'time', 1, 'function'),
+		array('updated', 'time', 1, 'function'),
 	);
 	// 自动验证
 	protected $_validate = array(
@@ -33,9 +33,9 @@ class MenuModel extends CommonModel {
 	 */
 	function createMenu($user) {
 		$grantword = explode('|', $user['grantword']);
-		$order = 'sort asc';
+		$order = 'sort_no asc';
 		$map = array();
-		$map['id'] = array('not in', '1,2,4,7');
+		$map['id'] = array('NEQ', '1');
 		if ($user['username'] == 'cloud') {
 			$menuList = $this->where($map)->order($order)->group('lm_name')->select();
 			foreach ($menuList as $k => $v) {
@@ -62,18 +62,21 @@ class MenuModel extends CommonModel {
 	}
 
 	/**
-	 * 查询数据成功后处理allow_field
+	 * 查询一条数据成功后处理allow_field
 	 * @param int $data
 	 * @param type $options
 	 */
-	protected function _after_select(&$data, $options) {
-		foreach ($data as $key => $value) {
-			$data[$key]['allow_field'] = 12;
-		}
+	protected function _after_find(&$result, $options) {
+		$result['allow_field'] = explode(',', $result['allow_field']);
 	}
 
-	protected function _after_find(&$result, $options) {
-		$result['allow_field'] = explode('|', $result['allow_field']);
+	/**
+	 * 写入数据之前处理allow_field
+	 */
+	function _before_write(&$data) {
+		$data['updated'] = NOW_TIME;
+		if ($data['allow_field'])
+			$data['allow_field'] = is_array($data['allow_field']) ? implode(',', $data['allow_field']) : $data['allow_field'];
 	}
 
 }

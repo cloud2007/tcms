@@ -13,6 +13,9 @@ return array(
 	'TMPL_ACTION_SUCCESS' => 'Common:success', // 错误跳转对应的模板文件
 	'LOAD_EXT_CONFIG' => 'database,email,data', // 自动加载其他配置文件
 	'AUTHCODE_KEY' => 'www.tcit123.com', //加密狗
+	'DEFAULT_PAGE_SIZE_10' => 10, //默认分页数量
+	'DEFAULT_PAGE_SIZE_15' => 15, //默认分页数量
+	'DEFAULT_PAGE_SIZE_20' => 20, //默认分页数量
 
 	/* SYSTEM DEFAULET CONFIG */
 	'ONLINE_LIMIT' => '999999', // 统计是否在线 超时时间(s)
