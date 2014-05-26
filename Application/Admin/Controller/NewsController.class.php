@@ -11,7 +11,7 @@ namespace Admin\Controller;
 
 class NewsController extends AdminController {
 
-	function index() {
+	function index($model = '', $url = '') {
 		$this->display();
 	}
 

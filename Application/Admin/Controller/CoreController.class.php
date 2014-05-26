@@ -11,18 +11,18 @@ namespace Admin\Controller;
 
 class CoreController extends AdminController {
 
-	function index($model = '') {
+	function index($model = '', $url = '') {
 		$model = new \Common\Model\MenuModel();
 		parent::index($model);
 	}
 
 	function _filter(&$map) {
-		if (is_array($map))
-			$map['id'] = array('GT', 10);
+		//if (is_array($map))
+		//$map['id'] = array('GT', 10);
 	}
 
 	function _order(&$order) {
-		$order = 'sort asc';
+		$order = 'sort_no asc';
 	}
 
 	function add($model = '') {

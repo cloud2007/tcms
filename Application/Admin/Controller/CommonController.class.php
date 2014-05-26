@@ -19,11 +19,12 @@ class CommonController extends \Think\Controller {
 	 * 列表页面
 	 * @param type $model
 	 */
-	function index($model = '') {
-
+	function index($model = '', $url = '') {
+		empty($model) && $model = D(CONTROLLER_NAME);
+		empty($url) && $url = U(CONTROLLER_NAME . '/index');
 		$map = array();
-		$map['deleted'] = array('EQ', 0);
 		$order = 'created desc';
+		$pageSize = C('DEFAULT_PAGE_SIZE_10');
 		empty($model) && $model = D(CONTROLLER_NAME);
 
 		if (method_exists($this, '_filter')) {
@@ -32,18 +33,19 @@ class CommonController extends \Think\Controller {
 		if (method_exists($this, '_order')) {
 			$this->_order($order);
 		}
+		if (method_exists($this, '_pagesize')) {
+			$this->_pagesize($pageSize);
+		}
 
-		$pageSize = $this->pageSize;
+
 		$pageNo = I('get.PageNo', '1', 'intval');
 		$pageNum = ($pageNo - 1) * $pageSize;
 		$limit = "{$pageNum},{$pageSize}";
 
-		$order = 'sort asc';
-
 		$count = $model->where($map)->count();
 
 		$pager = new \Common\Org\Pager();
-		$pagerData = $pager->getPagerData($count, $pageNo, U('Core/index'), 2, $pageSize); //参数记录数 当前页数 链接地址 显示样式 每页数量
+		$pagerData = $pager->getPagerData($count, $pageNo, $url, 2, $pageSize); //参数记录数 当前页数 链接地址 显示样式 每页数量
 
 		$data = $model->where($map)->order($order)->limit($limit)->select();
 

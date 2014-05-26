@@ -3,7 +3,7 @@
 	<h2 class="title">用 户 管 理</h2>
 	<p>管理导航：<a href="{:U('User/index')}">用户管理</a>&nbsp;|&nbsp;<a href="{:U('User/add')}">添加用户</a></p>
 </div>
-<form name="ListForm" id="ListForm" method="post" action="{:U('Core/delete')}">
+<form name="listForm" id="listForm" method="post" action="{:U('User/delete')}">
 <table width="100%" class="content_table">
 	<tr class="title">
 		<td><input type="checkbox" id="checkAll"> 全选</td>
@@ -13,16 +13,20 @@
 		<td><b>状态</b></td>
 		<td><b>单项操作</b></td>
 	</tr>
-	<?php foreach($userList as $v){?>
+	<foreach name="data" item="val">
 	<tr class="content">
 		<td><input name="id[]" type="checkbox" value="{$val['id']}"></td>
-		<td><?php echo $v->id;?></td>
-		<td><?php echo $v->userID;?></td>
-		<td><?php echo $v->grantWord();?></td>
-		<td><?php echo $v->status();?></td>
-		<td><?php echo $v->statusHref();?>|<a href="/admin.php/Core/userEdit/?id=<?php echo $v->id;?>">修改</a>|<a href="javascript:if (confirm('确定要删除此条信息吗？')) {location='/admin.php/Core/userDelete/<?php echo $v->id;?>';}">删除</a> </td>
+		<td>{$val['id']}</td>
+		<td>{$val['username']}</td>
+		<td>{$val['grantHtml']}</td>
+		<td>已{$val['status']?'启用':'禁用'}</td>
+		<td>{$val['statusHtml']}|<a href="{:U('User/add',array('id'=>$val['id']))}">修改</a>|<a href="javascript:if (confirm('确定删除?')) location='{:U('User/delete',array('id'=>$val['id']))}'">删除</a>|<a href="javascript:if (confirm('确定重置密码{:C('DEFAULT_PASSWORD')}?')) location='{:U('User/reset',array('id'=>$val['id']))}'">重置密码</a>|<a href="{:U('User/grant',array('id'=>$val['id']))}">分配权限</a></td>
 	</tr>
-	<?php }?>
+	</foreach>
+	<tr class="pages">
+		<td><input name="del" type="button" value="删 除" class="btn blue" /></td>
+		<td colspan="6">{$pagerData['linkhtml']}</td>
+	</tr>
 </table>
 </form>
 <include file="Common:footer" />

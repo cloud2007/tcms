@@ -29,7 +29,7 @@ $(function(){
 			return false;
 		}
 		if(confirm("此操作不能恢恢复，是否确定？")){
-			$('#ListForm').submit();
+			$('#listForm').submit();
 			return true;
 		}else{
 			return false;

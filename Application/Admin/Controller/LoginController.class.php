@@ -17,7 +17,7 @@ class LoginController extends CommonController {
 	 * @since 2014-05-12
 	 * @copyright TcitCMS
 	 */
-	function index() {
+	function index($model = '', $url = '') {
 		if (cookie(C('COOKIE_ID_ADMIN')))
 			$this->success('欢迎回来！', '/');
 		$this->display();

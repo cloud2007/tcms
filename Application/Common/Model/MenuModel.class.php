@@ -14,9 +14,7 @@ class MenuModel extends CommonModel {
 	//表名
 	protected $tableName = 'menu';
 	// 自动完成字段
-	protected $_auto = array(
-		array('updated', 'time', 1, 'function'),
-	);
+	protected $_auto = array();
 	// 自动验证
 	protected $_validate = array(
 			//array('lm_id', 'require', '栏目ID不能为空'),
@@ -32,29 +30,28 @@ class MenuModel extends CommonModel {
 	 * @return type
 	 */
 	function createMenu($user) {
-		$grantword = explode('|', $user['grantword']);
 		$order = 'sort_no asc';
 		$map = array();
 		$map['id'] = array('NEQ', '1');
+		$map['use'] = array('EQ', '1');
 		if ($user['username'] == 'cloud') {
 			$menuList = $this->where($map)->order($order)->group('lm_name')->select();
 			foreach ($menuList as $k => $v) {
-				$map['lm_name'] = array('eq', $v['lm_name']);
+				$map['lm_name'] = array('EQ', $v['lm_name']);
 				$menuList[$k]['son'] = $this->where($map)->order($order)->select();
 			}
-		} elseif (in_array('ALL', $grantword)) {
-			$map['grantword'] = array('not in', "{'Core','Grant'}");
+		} elseif (in_array(0, $user['grantArray'])) {
+			$map['id'] = array('GT', 7);
 			$menuList = $this->where($map)->order($order)->group('lm_name')->select();
 			foreach ($menuList as $k => $v) {
-				$map['lm_name'] = array('eq', $v['lm_name']);
+				$map['lm_name'] = array('EQ', $v['lm_name']);
 				$menuList[$k]['son'] = $this->where($map)->order($order)->select();
 			}
 		} else {
-			$GrantwordStr = implode(',', $grantword);
-			$map['grantword'] = array('not in', $GrantwordStr);
+			$map['id'] = array('IN', $user['grantArray']);
 			$menuList = $this->where($map)->order($order)->group('lm_name')->select();
 			foreach ($menuList as $k => $v) {
-				$map['lm_name'] = array('eq', $v['lm_name']);
+				$map['lm_name'] = array('EQ', $v['lm_name']);
 				$menuList[$k]['son'] = $this->where($map)->order($order)->select();
 			}
 		}
@@ -74,7 +71,6 @@ class MenuModel extends CommonModel {
 	 * 写入数据之前处理allow_field
 	 */
 	function _before_write(&$data) {
-		$data['updated'] = NOW_TIME;
 		if ($data['allow_field'])
 			$data['allow_field'] = is_array($data['allow_field']) ? implode(',', $data['allow_field']) : $data['allow_field'];
 	}

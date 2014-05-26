@@ -41,7 +41,9 @@ class UserModel extends CommonModel {
 		if (!$username || !$password) {
 			return '用户名密码不能为空！';
 		} else {
-			$map['username'] = array('eq', $username);
+			$map['username'] = array('EQ', $username);
+			$map['status'] = array('EQ', 1);
+			$map['deleted'] = array('EQ', 0);
 			$res = $this->where($map)->find();
 			if ($res) {
 				if ($res['password'] == md5($password)) {
@@ -85,6 +87,26 @@ class UserModel extends CommonModel {
 		cookie(C('COOKIE_ID_ADMIN'), null);
 		cookie(C('COOKIE_CODE_ADMIN'), null);
 		return;
+	}
+
+	/**
+	 * 查询数据成功后
+	 * @author Cloud
+	 * @since 2014-05-14
+	 */
+	protected function _after_select(&$resultSet, $options) {
+		foreach ($resultSet as $key => $value) {
+			$resultSet[$key]['statusHtml'] = $value['status'] ? '<a href="' . U('User/status', array('id' => $value['id'], 'status' => 0)) . '">禁用</a>' : '<a href="' . U('User/status', array('id' => $value['id'], 'status' => 1)) . '">启用</a>';
+			$resultSet[$key]['grantArray'] = explode(',', $value['grant']);
+			$grant = $value['grant'];
+			$model = new MenuModel();
+			$data = $model->where('`id` in(' . $grant . ')')->getField('menu_name',TRUE);
+			$resultSet[$key]['grantHtml'] = implode(',', $data);
+		}
+	}
+
+	protected function _after_find(&$result,$options) {
+		$result['grantArray'] = explode(',', $result['grant']);
 	}
 
 }

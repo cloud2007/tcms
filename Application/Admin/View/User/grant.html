@@ -1,0 +1,26 @@
+<include file="Common:header" />
+<div id="manager">
+	<h2 class="title">用 户 管 理</h2>
+	<p>管理导航：<a href="{:U('User/index')}">用户列表</a></p>
+</div>
+<form name="grantForm" id="grantForm" method="post" action="{:U('User/grantSave')}">
+	<table width="100%" class="content_table">
+		<tr>
+			<td width="120">用户名</td>
+			<td class="textleft">{$data['username']}<input type="hidden" name="id" value="{$data['id']}" /></td>
+		</tr>
+		<tr>
+			<td width="120">可分配权限</td>
+			<td class="textleft">
+				<input type="checkbox" name="grant[]" value="0" {:in_array(0,$data['grantArray'])?'checked="checked"':''} />管理员　
+				<foreach name="grantList" item="val">
+					<input type="checkbox" name="grant[]" value="{$val['id']}" {:in_array($val["id"],$data['grantArray'])?'checked="checked"':''} />{$val['menu_name']}　
+				</foreach>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="submit" class="btn" value=" 确 定 " /> <input type="button" class="btn" value=" 返 回 " onClick="self.history.back();" /></td>
+		</tr>
+	</table>
+</form>
+<include file="Common:footer" />
