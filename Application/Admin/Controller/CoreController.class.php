@@ -2,7 +2,7 @@
 
 /**
  * 后台首页控制器
- * @author:Cloud
+ * @author:Cloud <190296465@qq.com>
  * @copyright:TcitCMS
  * @since:2014-05-12
  */
@@ -11,38 +11,29 @@ namespace Admin\Controller;
 
 class CoreController extends AdminController {
 
-	function index($model = '', $url = '') {
+	function index() {
 		$model = new \Common\Model\MenuModel();
-		parent::index($model);
+		$map['id'] = array('GT', 10);
+		$this->map = $map;
+		$this->order = 'sort_no asc';
+		$this->pagesize = C('DEFAULT_PAGE_SIZE_10');
+		$this->url = U(CONTROLLER_NAME . '/index');
+		parent::commonIndex($model);
 	}
 
-	function _filter(&$map) {
-		//if (is_array($map))
-		//$map['id'] = array('GT', 10);
-	}
-
-	function _order(&$order) {
-		$order = 'sort_no asc';
-	}
-
-	function add($model = '') {
+	function add() {
 		$model = new \Common\Model\MenuModel();
-		$id = I('get.id', '1', 'intval');
-		if ($id) {
-			$data = $model->find($id);
-			$this->assign('data', $data);
-		}
-		$this->display();
+		parent::commonAdd($model);
 	}
 
-	function save($model = '', $url = '') {
+	function save() {
 		$model = new \Common\Model\MenuModel();
-		parent::save($model, U('Core/index'));
+		parent::commonSave($model);
 	}
 
-	function delete($model = '', $url = '') {
+	function delete() {
 		$model = new \Common\Model\MenuModel();
-		parent::delete($model, U('Core/index'));
+		parent::commonDelete($model);
 	}
 
 	function system() {

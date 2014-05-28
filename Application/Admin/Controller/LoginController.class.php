@@ -2,7 +2,7 @@
 
 /**
  * 登陆控制器
- * @author:Cloud
+ * @author:Cloud <190296465@qq.com>
  * @copyright:TcitCMS
  * @since:2014-05-12
  */
@@ -17,7 +17,7 @@ class LoginController extends CommonController {
 	 * @since 2014-05-12
 	 * @copyright TcitCMS
 	 */
-	function index($model = '', $url = '') {
+	function index() {
 		if (cookie(C('COOKIE_ID_ADMIN')))
 			$this->success('欢迎回来！', '/');
 		$this->display();

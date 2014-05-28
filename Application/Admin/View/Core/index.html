@@ -18,13 +18,13 @@
 	<foreach name="data" item="val">
 	<tr class="content">
 		<td><input name="id[]" type="checkbox" value="{$val['id']}"></td>
-		<td>{$val['id']}</td>
+		<td>{$val['lm_id']}</td>
 		<td>{$val['lm_name']}</td>
 		<td>{$val['menu_name']}</td>
 		<td>{:U($val['action'].'/'.$val['function'])}</td>
 		<td>{$val['manage']?'√':'×'}</td>
 		<td>{$val['use']?'√':'×'}</td>
-		<td><a href="{:U('Core/add',array('id'=>$val['id']))}">修改</a>|<a href="javascript:if (confirm('确定删除?')) location='{:U('Core/delete',array('id'=>$val['id']))}'">删除</a> </td>
+		<td><a href="{:U('Core/add',array('id'=>$val['id']))}">修改</a>|<a href="javascript:if (confirm('确定删除?')) location='{:U('Core/delete',array('id'=>$val['id']))}'">删除</a></td>
 	</tr>
 	</foreach>
 	<tr class="pages">

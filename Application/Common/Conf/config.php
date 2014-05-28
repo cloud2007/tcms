@@ -5,6 +5,10 @@ return array(
 	'MULTI_MODULE' => TRUE, // 是否允许多模块 如果为false 则必须设置 DEFAULT_MODULE
 	'DEFAULT_MODULE' => 'Home', //默认配置
 
+	/* 日记记录级别 */
+	//'LOG_RECORD' => true, //开启日志记录
+	//'LOG_LEVEL' => 'EMERG,ALERT,CRIT,ERR,SQL', //默认
+
 	/* 模块映射 */
 	//'URL_MODULE_MAP' => array('manager' => 'admin'), //必须小写
 
@@ -27,6 +31,9 @@ return array(
 	'VERSOIN' => '1.0.0', // 系统版本
 	'AUTO_TURN_PAGE_TIME' => '3000', // 自动跳转页面默认时间（单位S）
 	'LANG_SWITCH_ON' => true, // 开启语言包功能
+	'LANG_AUTO_DETECT' => true, // 自动侦测语言 开启多语言功能后有效
+	'LANG_LIST' => 'zh-cn', // 允许切换的语言列表 用逗号分隔
+	'VAR_LANGUAGE' => 'l', // 默认语言切换变量
 	'DOMAIN' => 'http://tcms.chofn.com', //站点的域名
 
 	/* Cookie Session 设置 */

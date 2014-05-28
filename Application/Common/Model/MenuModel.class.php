@@ -17,11 +17,11 @@ class MenuModel extends CommonModel {
 	protected $_auto = array();
 	// 自动验证
 	protected $_validate = array(
-			//array('lm_id', 'require', '栏目ID不能为空'),
-			//array('lm_name', 'require', '栏目名不能为空'),
-			//array('menu_name', 'require', '菜单名不能为空'),
-			//array('action', 'require', '控制器名不能为空'),
-			//array('function', 'require', '方法名不能为空'),
+		array('lm_id', 'require', '栏目ID不能为空'),
+		array('lm_name', 'require', '栏目名不能为空'),
+		array('menu_name', 'require', '菜单名不能为空'),
+		array('action', 'require', '控制器名不能为空'),
+		array('function', 'require', '方法名不能为空'),
 	);
 
 	/**

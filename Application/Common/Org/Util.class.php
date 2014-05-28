@@ -715,6 +715,45 @@ class Util {
 		}
 	}
 
+	/**
+	 * 验证字符串为空
+	 *
+	 * @param unknown $str
+	 * @param string $isTrim是否去掉左右两边的空格
+	 * @return return_type
+	 * @author Cloud
+	 * @since 2014-05-27
+	 * @copyright TCMS
+	 */
+	public static function isEmpty($str, $isTrim = true) {
+		if ($isTrim) {
+			$str = trim($str);
+		}
+		if (empty($str) && ($str != 0 || $str != "0")) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * 验证字符串不为空
+	 * @param unknown $str要验证的字符串
+	 * @param string $isTrim是否去掉左右两边的空格
+	 * @return return_type
+	 * @author Cloud
+	 * @since 2014-05-27
+	 * @copyright TCMS
+	 */
+	public static function notEmpty($str, $isTrim = true) {
+		if ($isTrim) {
+			$str = trim($str);
+		}
+		if (empty($str) && ($str != 0 || $str != "0")) {
+			return false;
+		}
+		return true;
+	}
+
 }
 
 ?>

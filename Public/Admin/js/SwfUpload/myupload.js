@@ -1,7 +1,7 @@
-var flash_buttonImg = "/Static/js/swfupload/images/upload_bigbottom.gif";
-var flash_buttonImg_small = "/Static/js/swfupload/images/upload_smallbottom.gif";
-var upload_list = $('#multiPicDiv');//图片群根节点
-var upload_path = '/Uploads'
+var flash_buttonImg = "/Public/Admin/js/SwfUpload/images/upload_bigbottom.gif";
+var flash_buttonImg_small = "/Public/Admin/js/SwfUpload/images/upload_smallbottom.gif";
+var upload_list = $('#multipicDiv');//图片群根节点
+var upload_path = '/Public/Uploads'
 var z_index=99;
 $(document).ready(function() {
 
@@ -14,10 +14,10 @@ $(document).ready(function() {
 	uploadSigle('upload3');
 	uploadSigle('upload4');
 	uploadSigle('upload5');
-	uploadSigle('categorySmallPic');
-	uploadSigle('categoryBigPic');
-	uploadMulti('multiPic');
-	uploadMulti('categoryMultiPic');
+	uploadSigle('category_smallpic');
+	uploadSigle('category_bigpic');
+	uploadMulti('multipic');
+	uploadMulti('category_multipic');
 
 	//设置默认图事件
 	$(".default_box a").live('click',function(){
@@ -81,7 +81,6 @@ function BatchSetDefault(button, catId) {
 			BatchCreateSetDefaultButton(button_old, catId);//变更原“默认图”为“设置默认”按钮
 			button_old.hide();
 		}
-
 		$('input[name="multiDefault[]"]').val(0);//处理全部图片为非默认图
 		button.parent().find('[name="multiDefault[]"]').val(1);//将当前节点设为“默认图”
 		button.html('');//移除原文案
@@ -140,8 +139,8 @@ function addthispic(ID,picthumb,pic_sub_cate,pic_show_name){
 //单张图片上传
 function uploadSigle(buttonName){
 	$('#'+buttonName+'Button').uploadify({
-		'uploader'       : '/Static/js/swfupload/scripts/uploadify.swf',
-		'script'         : '/admin.php/upload/sigleUpload',
+		'uploader'       : '/Public/Admin/js/SwfUpload/scripts/uploadify.swf',
+		'script'         : '/Admin/Upload/sigleUpload',
 		'scriptAccess'   : 'always',
 		'cancelImg'      : '',
 		'wmode'          : 'transparent',  //falsh透明
@@ -172,7 +171,7 @@ function uploadSigle(buttonName){
 								alert(json['err']);
 								$('#'+buttonName+'Div .wait').remove();
 							}else{
-								$('#'+ID).html('<a href="' + upload_path + json['msg']+'" target="_blank"><img src="' + upload_path + json['msg']+'" /></a>');
+								$('#'+ID).html('<a href="' + json['real_path']+'" target="_blank"><img src="' + json['real_path']+'" /></a>');
 								$('#'+ID).append('<input type="hidden" name="'+ buttonName+'" value="'+ json['msg'] +'" />');
 								$('#'+ID).append('<span class="closed"></span>');
 							}
@@ -186,8 +185,8 @@ function uploadSigle(buttonName){
 //多图上传
 function uploadMulti(buttonName){
 	$('#'+buttonName+'Button').uploadify({
-		'uploader'       : '/Static/js/swfupload/scripts/uploadify.swf',
-		'script'         : '/admin.php/upload/mutliUpload',
+		'uploader'       : '/Public/Admin/js/SwfUpload/scripts/uploadify.swf',
+		'script'         : '/Admin/Upload/mutliUpload',
 		'scriptAccess'   : 'always',
 		'cancelImg'      : '',
 		'wmode'          : 'transparent',  //falsh透明
@@ -218,7 +217,7 @@ function uploadMulti(buttonName){
 								$('#'+ID).remove();
 							}else{	
 								$('#'+buttonName).val(json['msg']);
-								$('#'+ID).html('<div class="list_img"><a href="'+ upload_path + json['msg']+'" target="_blank"><img src="'+ upload_path + json['msg']+'" /></a></div>');
+								$('#'+ID).html('<div class="list_img"><a href="' + json['real_path']+'" target="_blank"><img src="' + json['real_path']+'" /></a></div>');
 								$('#'+ID).append('<input type="text" class="multiInputTitle" name="multiTitle[]" />');
 								$('#'+ID).append('<input type="text" class="multiInputOrder" name="multiOrder[]" />');
 								$('#'+ID).append('<input type="hidden" name="multiUrl[]" value="'+json['msg']+'">');

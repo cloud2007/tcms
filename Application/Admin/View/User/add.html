@@ -6,31 +6,32 @@
 <form name="addForm" id="addForm" method="post" action="{:U('User/save')}">
 	<table width="100%" class="content_table">
 		<tr>
-			<td colspan="2" class="textleft"><font color="#FF0000">&nbsp;&nbsp;Tips:修改用户可不输入密码，添加用户默认密码888888!</font></td>
+			<td colspan="2" class="textleft"><font color="#FF0000">&nbsp;&nbsp;Tips:修改用户可不输入密码，添加用户默认密码{:C('DEFAULT_PASSWORD')}!</font></td>
 		</tr>
 		<tr>
 			<td width="120">用户名</td>
-			<td class="textleft"><input type="text" name="userID" value="" /><input type="hidden" name="id" value="" /></td>
+			<td class="textleft"><input type="text" name="username" value="{$data['username']}" /><input type="hidden" name="id" value="{$data['id']}" /></td>
 		</tr>
 		<tr>
 			<td>输入密码</td>
-			<td class="textleft"><input type="password" name="pwd1" /></td>
+			<td class="textleft"><input type="password" name="password" /></td>
 		</tr>
 		<tr>
 			<td>确认密码</td>
-			<td class="textleft"><input type="password" name="pwd2" /></td>
+			<td class="textleft"><input type="password" name="password1" /></td>
 		</tr>
 		<tr>
-			<td width="120">权限</td>
+			<td width="120">可分配权限</td>
 			<td class="textleft">
-				
-				
-				
+				<input type="checkbox" name="grant[]" value="0" {:in_array(0,$data['grantArray'])?'checked="checked"':''} />管理员　
+				<foreach name="grantList" item="val">
+					<input type="checkbox" name="grant[]" value="{$val['id']}" {:in_array($val["id"],$data['grantArray'])?'checked="checked"':''} />{$val['menu_name']}　
+				</foreach>
 			</td>
 		</tr>
 		<tr>
 			<td width="120">状态</td>
-			<td class="textleft"></td>
+			<td class="textleft"><input type="radio" name="status" value="1" checked="checked"> 是　　<input type="radio" name="status" value="0" <equal name="data['status']" value="0">checked="checked"</equal>> 否</td>
 		</tr>
 		<tr>
 			<td colspan="2"><input type="submit" class="btn" value=" 确 定 "></td>
@@ -40,28 +41,28 @@
 <include file="Common:footer" />
 <script type="text/javascript">
 $(function(){
-	var demo = $("#changeUser").Validform({
+	var demo = $("#addForm").Validform({
 		tiptype:3,
 	});
-	demo.tipmsg.s="Error!";
+	demo.tipmsg.s="输入错误!";
 	demo.addRule([
 		{
-			ele:"input[name='userID']",
+			ele:"input[name='username']",
 			datatype:"*3-18",
 		},
 		{
-			ele:"input[name='pwd1']",
+			ele:"input[name='password']",
 			datatype:"*3-16",
 			nullmsg:"输入密码",
 			errormsg:"密码长度为6-16个字符",
 			ignore:"ignore",
 		},
 		{
-			ele:"input[name='pwd2']",
+			ele:"input[name='password1']",
 			datatype:"*3-16",
 			nullmsg:"再次输入密码",
-			recheck:"pwd1",
-			errormsg:"输入错误",
+			recheck:"password",
+			errormsg:"输入不一致",
 			ignore:"ignore",
 		},
 	]);

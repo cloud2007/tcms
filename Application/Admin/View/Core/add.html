@@ -7,7 +7,7 @@
 	<table width="100%" class="content_table">
 		<tr>
 			<td>栏目名称</td>
-			<td class="textleft"><input type="text" name="lm_name" value="{$data['lm_name']}" size="18" /><input type="hidden" name="id" value="{$data['id']==1?'':$data['id']}" /></td>
+			<td class="textleft"><input type="text" name="lm_name" value="{$data['lm_name']|default='栏目名称'}" size="18" /><input type="hidden" name="id" value="{$data['id']==1?'':$data['id']}" /></td>
 			<td>菜单标题</td>
 			<td class="textleft"><input type="text" name="menu_name" value="{$data['menu_name']}" size="18" /></td>
 			<td>是否可用</td>
@@ -80,8 +80,8 @@
 			$field_select = 'title'.$i.'_select';
 			$field_check = 'title'.$i.'_check';
 			?>
-			<td><input name="allow_field[]" type="checkbox" {:in_array($field,$data['allow_field'])?'checked="checked"':''} />
-				<input name="title{$i}" type="text" value="{$data[$field]}">
+			<td><input name="allow_field[]" type="checkbox" value="{$field}" {:in_array($field,$data['allow_field'])?'checked="checked"':''} />
+				<input name="{$field}" type="text" value="{$data[$field]}">
 				字段名：{$field}<br>
 				<input name="allow_field[]" type="checkbox" value="{$field}_select" {:in_array($field.'_select',$data['allow_field'])?'checked="checked"':''} />
 				select
@@ -95,7 +95,7 @@
 		</tr>
 		<tr>
 			<?php
-			$fieldlist = array('content1','content2','content3','content4','content5','','name1','name2','name3','name4','name5','','upload1','upload2','upload3','upload4','upload5','multiPic');
+			$fieldlist = array('content1','content2','content3','content4','content5','','name1','name2','name3','name4','name5','','upload1','upload2','upload3','upload4','upload5','multipic');
 			foreach($fieldlist as $k => $field){
 				if(!$field){
 					echo '<td></td>';
@@ -140,7 +140,7 @@
 				字段名：hits</td>
 			<td><input name="allow_field[]" type="checkbox" value="created" {:in_array('created',$data['allow_field'])?'checked="checked"':''} />
 				<input name="created" type="text" value="{$data['created']}">
-				字段名：creatTime</td>
+				字段名：created</td>
 		</tr>
 	</table>
 	<div class="clearH"></div>

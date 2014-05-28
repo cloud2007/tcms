@@ -21,7 +21,7 @@
 				<dd style='display:none' class='sitem' id='items{$key}'>
 					<ul class='sitemu'>
 						<foreach name="val['son']" item="v">
-							<li><a href="{:U($v['action'].'/'.$v['function'],array('col'=>$v['id'],'dat'=>$v['database']))}" target="main">{$v['menu_name']}</a>
+							<li><a href="{:U($v['action'].'/'.$v['function'],array('menu_id'=>$v['id'],'lm_id'=>$v['lm_id']))}" target="main">{$v['menu_name']}</a>
 								<equal name="v['manage']" value="1">| <a href="{:U($v['action'].'/index',array('col'=>$v['id'],'dat'=>$v['database']))}" target="main">管理</a></equal>
 							</li>
 						</foreach>

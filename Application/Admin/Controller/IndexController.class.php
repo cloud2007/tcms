@@ -2,7 +2,7 @@
 
 /**
  * 后台首页控制器
- * @author:Cloud
+ * @author:Cloud <190296465@qq.com>
  * @copyright:TcitCMS
  * @since:2014-05-12
  */
@@ -11,7 +11,7 @@ namespace Admin\Controller;
 
 class IndexController extends AdminController {
 
-	function index($model = '', $url = '') {
+	function index() {
 		$this->display();
 	}
 

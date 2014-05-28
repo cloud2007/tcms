@@ -13,6 +13,15 @@ class UserModel extends CommonModel {
 
 	private $userID = '';
 	private $userCode = '';
+	protected $_auto = array(
+		array('created', 'time', 1, 'function'), //对created字段在新增的时候写入当前时间戳
+		array('password', 'password', 3, 'callback'),
+		array('password', '', 2, 'ignore'),
+	);
+	protected $_validate = array(
+		array('username', 'require', '用户名不能为空'),
+		array('username', '', '该用户名已存在', 1, 'unique', 3),
+	);
 
 	/**
 	 * 初始化
@@ -99,14 +108,39 @@ class UserModel extends CommonModel {
 			$resultSet[$key]['statusHtml'] = $value['status'] ? '<a href="' . U('User/status', array('id' => $value['id'], 'status' => 0)) . '">禁用</a>' : '<a href="' . U('User/status', array('id' => $value['id'], 'status' => 1)) . '">启用</a>';
 			$resultSet[$key]['grantArray'] = explode(',', $value['grant']);
 			$grant = $value['grant'];
-			$model = new MenuModel();
-			$data = $model->where('`id` in(' . $grant . ')')->getField('menu_name',TRUE);
-			$resultSet[$key]['grantHtml'] = implode(',', $data);
+			if (\Common\Org\Util::notEmpty($grant)) {
+				if ($grant == 0)
+					$resultSet[$key]['grantHtml'] = '管理员';
+				else {
+					$model = new MenuModel();
+					$data = $model->where('`id` in(' . $grant . ')')->getField('menu_name', TRUE);
+					$resultSet[$key]['grantHtml'] = implode(',', $data);
+				}
+			}else
+				$resultSet[$key]['grantHtml'] = '';
 		}
 	}
 
-	protected function _after_find(&$result,$options) {
-		$result['grantArray'] = explode(',', $result['grant']);
+	protected function _after_find(&$result, $options) {
+		if (\Common\Org\Util::notEmpty($result['grant']))
+			$result['grantArray'] = explode(',', $result['grant']);
+		else
+			$result['grantArray'] = array();
+	}
+
+	protected function _before_write(&$data) {
+		if ($data['grant']) {
+			if (in_array('0', $data['grant']))
+				$data['grant'] = 0;
+			else
+				$data['grant'] = implode(',', $data['grant']);
+		}
+		if (!$data['id'] && !$data['password'])
+			$data['password'] = md5(C('DEFAULT_PASSWORD'));
+	}
+
+	function password($data) {
+		return $data ? md5($data) : '';
 	}
 
 }
