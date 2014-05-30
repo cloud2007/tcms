@@ -51,8 +51,8 @@ class AdminController extends CommonController {
 		$this->url = U(CONTROLLER_NAME . '/index');
 
 		$menuModel = new \Common\Model\MenuModel();
-		$data = $menuModel->find($this->menu_id);
-		$this->assign('menuData', $data);
+		$menuData = $menuModel->find($this->menu_id);
+		$this->assign('menuData', $menuData);
 	}
 
 	function commonIndex($model = '') {

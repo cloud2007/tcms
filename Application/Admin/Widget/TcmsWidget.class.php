@@ -5,6 +5,72 @@ namespace Admin\Widget;
 class TcmsWidget extends \Think\Controller {
 
 	/**
+	 * categoryID 字段
+	 * @param type $field
+	 * @return string|null
+	 */
+	public function showCategory($field, $data, $menuData) {
+		if (in_array($field, $menuData['allow_field'])) {
+
+			$categoryModel = new \Common\Model\CategoryModel();
+			$map['lm_id'] = array('EQ', $menuData['lm_id']);
+			$map['deleted'] = array('EQ', 0);
+			$cateData = $categoryModel->where($map)->order('sort asc')->select();
+			$treeModel = new \Common\Org\Tree($cateData);
+			$cateData = $treeModel->getArray();
+
+			$returnStr = '<tr><td>';
+			$returnStr .= $menuData[$field];
+			$returnStr .= '</td><td class="textleft">';
+			$returnStr .= '<select name="' . $field . '">';
+			$returnStr .='<option value="0">----请选择----</option>';
+			foreach ($cateData as $v) {
+				if ($v['id'] == $data['category'])
+					$selectStr = 'selected = "selected"';
+				else
+					$selectStr = '';
+				$returnStr .= '<option value="' . $v['id'] . '"' . $selectStr . '>' . $v['category_title'] . '</option>';
+			}
+			$returnStr .='</select>';
+			$returnStr .='</td></tr>';
+			return $returnStr;
+		}
+		return NULL;
+	}
+
+	/**
+	 * categoryID 字段
+	 * @param type $field
+	 * @return string|null
+	 */
+	public function showCategorySelect($data, $selected, $menuData) {
+		$categoryModel = new \Common\Model\CategoryModel();
+		$map['lm_id'] = array('EQ', $menuData['lm_id']);
+		$map['deleted'] = array('EQ', 0);
+		$cateData = $categoryModel->where($map)->order('sort asc')->select();
+		$treeModel = new \Common\Org\Tree($cateData);
+		$cateData = $treeModel->getArray();
+
+		$returnStr = '<tr><td>';
+		$returnStr .= '上级类别';
+		$returnStr .= '</td><td class="textleft">';
+		$returnStr .= '<select name="parent_id">';
+		$returnStr .='<option value="0">----顶级类别----</option>';
+		foreach ($cateData as $v) {
+			if ($v['id'] == $data['parent_id'] || $v['id'] == $selected)
+				$selectStr = 'selected = "selected"';
+			else
+				$selectStr = '';
+			$returnStr .= '<option value="' . $v['id'] . '"' . $selectStr . '>' . $v['category_title'] . '</option>';
+		}
+		$returnStr .='</select>';
+		$returnStr .='</td></tr>';
+		return $returnStr;
+
+		return NULL;
+	}
+
+	/**
 	 * input 字段
 	 * @param type $field
 	 * @return string|null
@@ -126,8 +192,8 @@ class TcmsWidget extends \Think\Controller {
 			$returnStr .= $menuData[$field];
 			$returnStr .= '</td><td class="textleft">';
 			$returnStr .= '<div class="multipicDiv" id="multipicDiv"><ul>';
-			if ($data['multipic']) {
-				$picArray = explode("\n", $data['multipic']); //0order 1url 2title 3default
+			if ($data[$field]) {
+				$picArray = explode("\n", $data[$field]); //0order 1url 2title 3default
 				asort($picArray);
 				foreach ($picArray as $value) {
 					$picInfoArray = explode('|', $value);

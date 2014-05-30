@@ -22,8 +22,9 @@
 					<ul class='sitemu'>
 						<foreach name="val['son']" item="v">
 							<li><a href="{:U($v['action'].'/'.$v['function'],array('menu_id'=>$v['id'],'lm_id'=>$v['lm_id']))}" target="main">{$v['menu_name']}</a>
-								<equal name="v['manage']" value="1">| <a href="{:U($v['action'].'/index',array('col'=>$v['id'],'dat'=>$v['database']))}" target="main">管理</a></equal>
+								<equal name="v['manage']" value="1">| <a href="{:U($v['action'].'/index',array('menu_id'=>$v['id'],'lm_id'=>$v['lm_id']))}" target="main">管理</a></equal>
 							</li>
+							{:strpos($v['allow_field'],'category')?'<li><a href="' . U('Category/index',array('menu_id'=>$v['id'],'lm_id'=>$v['lm_id'])) . '">分类管理</a></li>':''}
 						</foreach>
 					</ul>
 				</dd>

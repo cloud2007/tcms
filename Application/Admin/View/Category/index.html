@@ -6,7 +6,7 @@
 <form name="listForm" id="listForm" method="post" action="{:U('Category/delete')}">
 <table width="100%" class="content_table">
 	<tr class="title">
-		<td><input type="checkbox" id="checkAll" disabled="disabled" /> 全选</td>
+		<td><input type="checkbox" id="checkAll" /> 全选</td>
 		<td><b>类别ID</b></td>
 		<td><b>类别名称</b></td>
 		<td><b>单项操作</b></td>
@@ -15,24 +15,28 @@
 	<tr class="content">
 		<td><input name="id[]" type="checkbox" value="{$val['id']}"></td>
 		<td>{$val['id']}</td>
-		<td class="textleftlist">{$val['category_title']}<div style="float:right;"><input id="<?php echo $v['id'];?>" op="up" name="upButton" type="button" value="上移" class="btn blue small" /> <input id="<?php echo $v['id'];?>" op="down" name="downButton" type="button" value="下移" class="btn blue small" /></div></td>
-		<td><a href="/admin.php/Category/AddSon/<?php echo $v['id'];?>">添加子类</a>|<a href="/admin.php/Category/Add/<?php echo $v['id'];?>">修改</a>|<a href="javascript:if (confirm('确定要删除此条信息吗？')) {location='/admin.php/Category/Delete/<?php echo $v['id'];?>';}">删除</a> </td>
+		<td class="textleftlist">
+			{$val['category_title']}
+			<div style="float:right;">
+				<input id="{$val['id']}" op="up" name="upButton" type="button" value="上移" class="btn blue small" /> 
+				<input id="{$val['id']}" op="down" name="downButton" type="button" value="下移" class="btn blue small" />
+			</div>
+		</td>
+		<td><a href="{:U('Category/add',array('pid'=>$val['id']))}">添加子类</a>|<a href="{:U('Category/add',array('id'=>$val['id']))}">修改</a>|<a href="javascript:if (confirm('确定要删除此条信息吗？')) location='{:U('Category/delete',array('id'=>$val['id']))}'">删除</a> </td>
 	</tr>
 	</foreach>
 	<tr>
 		<td><input name="del" type="button" value="删 除" class="btn blue" /></td>
-		<td colspan="6" class="pages"></td>
+		<td colspan="3" class="pages"></td>
 	</tr>
 </table>
 </form>
-<script type="text/javascript" src="/Static/js/List.js"></script>
 <script>
 	$("input[name='upButton'],input[name='downButton']").click(function(){
 		var id = $(this).attr('id');
 		var op = $(this).attr('op');
-		//alert(id+op);
-		$('#ListForm').attr("action","/admin.php/category/"+op+'/'+id);
-		$('#ListForm').submit();
+		$('#listForm').attr("action",'{:U('Category/sort',array(),false)}/op/' + op + '/id/' + id);
+		$('#listForm').submit();
 	})
 </script>
 <include file="Common:footer" />

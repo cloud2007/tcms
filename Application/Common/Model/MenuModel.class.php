@@ -32,8 +32,9 @@ class MenuModel extends CommonModel {
 	function createMenu($user) {
 		$order = 'sort_no asc';
 		$map = array();
-		$map['id'] = array('NEQ', '1');
-		$map['use'] = array('EQ', '1');
+		$map['id'] = array('NEQ', 1);
+		$map['use'] = array('EQ', 1);
+		$map['deleted'] = array('EQ', 0);
 		if ($user['username'] == 'cloud') {
 			$menuList = $this->where($map)->order($order)->group('lm_name')->select();
 			foreach ($menuList as $k => $v) {

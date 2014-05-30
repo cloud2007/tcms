@@ -22,6 +22,61 @@ class CategoryController extends AdminController {
 		$this->display();
 	}
 
+	function add() {
+		parent::indexInitialize();
+		if (I('get.pid', '', 'intval'))
+			$this->assign('selected', I('get.pid'));
+		if (!I('get.id', '', 'intval')) {
+			$model = new \Common\Model\CategoryModel();
+			$sort = $model->where($this->map)->count();
+			$this->assign('sort', $sort + 1);
+		}
+		parent::commonAdd();
+	}
+
+	function save() {
+		parent::commonSave();
+	}
+
+	function sort() {
+		parent::indexInitialize();
+		$op = I('get.op', '', 'trim');
+		$id = I('get.id', '', 'intval');
+		if (!$op || !$id)
+			$this->error(L('PARAMS_ERROR'));
+		if ($op == 'up') {
+			$model = new \Common\Model\CategoryModel();
+			$oldData = $model->find($id);
+			$map = $this->map;
+			$map['sort'] = array('LT', $oldData['sort']);
+			$order = 'sort desc';
+			$newData = $model->where($map)->order($order)->find();
+			if ($newData && $oldData) {
+				$temp = $newData['sort'];
+				$model->where('`id`=' . $newData['id'])->setField('sort', $oldData['sort']);
+				$model->where('`id`=' . $oldData['id'])->setField('sort', $temp);
+			}
+		}
+		if ($op == 'down') {
+			$model = new \Common\Model\CategoryModel();
+			$oldData = $model->find($id);
+			$map = $this->map;
+			$map['sort'] = array('GT', $oldData['sort']);
+			$order = 'sort asc';
+			$newData = $model->where($map)->order($order)->find();
+			if ($newData && $oldData) {
+				$temp = $newData['sort'];
+				$model->where('`id`=' . $newData['id'])->setField('sort', $oldData['sort']);
+				$model->where('`id`=' . $oldData['id'])->setField('sort', $temp);
+			}
+		}
+		$this->success(L('OPRATION_SUCCESS'));
+	}
+
+	function delete() {
+		parent::commonDelete();
+	}
+
 }
 
 ?>

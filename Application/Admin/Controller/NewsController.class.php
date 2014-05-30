@@ -16,14 +16,19 @@ class NewsController extends AdminController {
 		parent::commonIndex();
 	}
 
-	function add(){
+	function add() {
 		parent::indexInitialize();
 		parent::commonAdd();
 	}
 
-	function save(){
+	function save() {
 		parent::commonSave();
 	}
 
+	function delete() {
+		parent::commonDelete();
+	}
+
 }
+
 ?>

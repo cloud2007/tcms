@@ -30,6 +30,28 @@ class NewsModel extends CommonModel {
 		}
 	}
 
+	/**
+	 * 查询数据成功后
+	 * @author Cloud
+	 * @since 2014-05-14
+	 */
+	protected function _after_select(&$resultSet, $options) {
+		foreach ($resultSet as $key => $value) {
+			$newArray = array();
+			$data = $this->getCagegoryTitle($resultSet[$key]['category'], $newArray);
+			arsort($newArray);
+			$resultSet[$key]['categoryHtml'] = implode('-', $newArray);
+		}
+	}
+
+	protected function getCagegoryTitle($category_id, &$newArray) {
+		$cateModel = new CategoryModel();
+		$resData = $cateModel->find($category_id);
+		$newArray[] = $resData['category_title'];
+		if ($resData['parent_id'] != 0)
+			$this->getCagegoryTitle($resData['parent_id'], $newArray);
+	}
+
 }
 
 ?>
