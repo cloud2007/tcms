@@ -1,33 +1,35 @@
-.login{ height:524px; width:100%; background:#E8F4DD  url(../images/yindao_bg.gif) center 27px no-repeat;}
-.login .login_box{ width:880px; height:524px; margin:0 auto; position:relative;}
-.login .login_box .login_content{ position:absolute; right:55px; bottom:22px; width:285px; height:329px; overflow:hidden;}
-.login .login_box .login_content input{ display:block; border:1px solid #80C145; width:281px; height:46px; line-height:46px; text-indent:40px; font-size:16px; font-family:"微软雅黑"; color:#999; background:url(../images/icon.png) -348px 9px no-repeat #fff; margin-bottom:37px; outline:none}
-.login .login_box .login_content input.username{_float:left;}
-.login .login_box .login_content input.pwd{ background-position:-348px -28px;margin:0;}
+@charset 'utf-8';
+body{ background:#FFFEFC;}
+.header{ width:900px; margin:0 auto; margin-top:50px;}
 
-.login .login_box .login_content .infos_tips{ height:32px; line-height:32px; width:180px; margin:0 0 5px 0; float:left}
-.login .login_box .login_content .infos_tips p{ background-color:#fff392; width:180px;font-size:12px;color:#666;}
-.login .login_box .login_content .input_remember{ width:100px; float:right; padding:5px 0 0 0; text-align:right}
-.login .login_box .login_content input.remember{ width:20px; height:20px; display:inline-block; margin:0}
+.main{width:900px; margin:0 auto; margin-top:25px;}
+.main .login_picture{ height:420px; background:url(../Images/login_pic.jpg) no-repeat -15px center;}
+.main .login_box{ border:1px solid #F4EDE4; background:#FFF; width:350px; height:300px; position:relative; float:right; margin-top:40px; -moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px; padding-top:20px;}
+.main .login_box input{ border:#EFEDED 1px solid; -moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px; width:230px; height:50px; line-height:50px; margin:0 auto; display:block; margin-top:25px; padding: 0 0 0 40px; background:url(../Images/login_user_info.png) no-repeat 15px center;}
+.main .login_box input.login_pwd{ background:url(../Images/login_user_pwd.png) no-repeat 15px center;}
+.main .login_box a.login_btn{ text-align:center; font-size:24px; color:#FFF; -moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px; width:270px; height:50px; line-height:50px; margin:0 auto; display:block; margin-top:25px; background:#DD6823; font-family:"Microsoft YaHei";}
+.main .login_box a.login_btn:hover{ background:#CE6026;}
+.main .login_box span{width:270px; height:25px; line-height:25px; margin:0 auto; display:block; margin-top:20px; text-align:center;}
+.main .login_box span a{ color:#666766;}
+.main .login_box span a.login_reg{ color:#DD6823;}
+.main .login_box span a:hover{ color:#DD6823;}
+.main .login_box .connect_box{ position:absolute; left:39px; top:97px;border:#EFEDED 1px solid; -moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px; width:270px; background:#fff;}
+.main .login_box .connect_box a{ display:block; line-height:30px; font-size:14px; text-indent:15px;}
+.main .login_box .connect_box a:hover{ background:#F9F9F9;}
+/*------- 联想邮箱样式 ------*/
+#mailBox{background:#FFFEFC;border:1px solid #EFEDED;position:absolute;z-index:9999;display:none;-webkit-box-shadow:0px 2px 7px rgba(0, 0, 0, 0.35);-moz-box-shadow:0px 2px 7px rgba(0, 0, 0, 0.35);}
+#mailBox p{width:100%;margin:0;padding:0;height:20px;line-height:20px;clear:both;font-size:12px;color:#ccc;cursor:default;text-indent: 8px;}
+#mailBox ul li{font-size:12px;height:22px;line-height:22px;color:#666;font-family:'Tahoma';list-style:none;cursor:pointer;overflow:hidden;text-indent: 8px;}
+#mailBox .cmail{color:#fff;background:#e86b1d;}
 
-.login .login_box .login_content a.login_btn{ display:inline-block; font-size:24px; font-family:"微软雅黑"; color:#FFF; background:#80C145; width:100%; height:57px; line-height:57px; text-align:center; text-decoration:none;}
-.login .login_box .login_content a.login_btn:hover{ background:#4E7828; color:#FFF;}
-.login .login_box .login_content a{ color:#666666; text-decoration:none;}
-.login .login_box .login_content a:hover{ color:#E86B1D;}
-.login .login_box .login_content span{line-height: 30px; display:block; padding-top:30px;overflow: hidden;zoom:1;}
-.login .login_box .login_content a.Free_Signup{font-size: 16px; color: #e96b1e;font-weight: bold;}
-.login .login_box .login_content a.Free_Signup:hover{text-decoration: underline;}
-.login .login_box .login_content a.forget_pwd{margin-left: 10px;_margin-top:-1px;}
-.login .login_info{width:100%; background:url(../images/yindao_bcakg.gif) center top no-repeat;}
-.login .login_info span{ display:block; width:780px; margin:0 auto; border-bottom:1px solid #D0D0D0; padding:65px 0;}
-.login .login_info .login_int{width:780px; margin:0 auto; padding:30px 0; overflow:hidden;}
-.login .login_info .login_int h1{ font-size:24px; font-family:"微软雅黑";}
-.login .login_info .login_int ul{ width:160%; padding:20px 0 20px 0;}
-.login .login_info .login_int li{ display:inline-block; _width:170px; *width:170px; border:none; border-right:1px solid #DADADA; margin:0 70px 20px 0; padding-right:70px;_float:left;*float:left;}
-.login .login_info .login_int li font{ font-size:14px; font-family:"微软雅黑"; color:#59892E; line-height:40px; display:block;}
-.login .login_info .login_int li em{ display:inline-block; width:156px; line-height:25px; color:#999; font-size:12px; font-style:normal;}
-.login .login_footer{ background:#333; height:75px; color:#999999; line-height:30px; font-size:12px;text-align: center;padding-top: 15px;}
-.login .login_footer a{color: #999;line-height: 20px;}
-
-i.tips_icon {background-position: -102px -167px;width: 17px;height: 17px;margin: -2px 7px 0 7px;}
-i {display: inline-block;width: 32px;height: 32px;background: url(../images/icon.png) no-repeat -9999px -9999px;vertical-align: middle;}
+.login_text{width:900px; margin:0 auto; margin-top:5px; overflow:hidden;}
+.login_text ul{ width:110%;}
+.login_text ul span{ width:25%; display:inline-block; padding-left:70px; color:#999; font-size:12px; background:url(../Images/login_icon01.png) no-repeat left center;}
+.login_text ul span.text02{ background:url(../Images/login_icon02.png) no-repeat left center;}
+.login_text ul span.text03{ background:url(../Images/login_icon03.png) no-repeat left center;}
+.login_text ul span em{ font-size:14px; font-family:"Microsoft YaHei"; line-height:30px; display:block; text-align:left; color:#333; font-weight:normal;}
+.footer{ width:900px; margin:0 auto; margin-top:25px; overflow:hidden; text-align:center; border-top:1px solid #EFEDED; margin-top:45px; padding-top:35px; color:#666;padding-bottom: 20px;}
+.footer a{ line-height:30px; color:#666;}
+.footer a:hover{ color:#CE6026;}
+	
+.tips_icon{ margin: 0 0 0 40px; width:261px; background:#fff392; padding:0 0 0 10px; height:25px; line-height:25px; color:#000;}

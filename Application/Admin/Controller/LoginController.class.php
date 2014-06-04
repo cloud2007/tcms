@@ -41,6 +41,15 @@ class LoginController extends CommonController {
 			$this->error($res);
 		}
 	}
+        
+        /**
+         * 退出登陆 
+         */
+        function loginOut(){
+            $model =new \Common\Model\UserModel();
+            $model->loginOut();
+            $this->success('退出成功',U('Index/index'));
+        }
 
 }
 

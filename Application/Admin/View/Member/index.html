@@ -1,0 +1,36 @@
+<include file="Common:header" />
+<div id="manager">
+	<h2 class="title">会 员 管 理</h2>
+	<p>管理导航：<a href="{:U('Member/index')}">会员管理</a><span><input type="text" name="wd" id="wd" value="<?php echo $_GET['wd'];?>" /><input name="search" type="button" value="快速检索" class="search" /></span></p>
+</div>
+<form name="listForm" id="listForm" method="post" action="{:U('News/delete')}">
+<table width="100%" class="content_table">
+	<tr class="title">
+		<td><input type="checkbox" id="checkAll"> 全选</td>
+		<td><b>ID</b></td>
+		<td><b>{$menuData['title']}</b></td>
+		<td><b>{$menuData['category']}</b></td>
+		<td><b>属　　性</b></td>
+		<td><b>{$menuData['hits']}</b></td>
+		<td><b>{$menuData['created']}</b></td>
+		<td><b>单项操作</b></td>
+	</tr>
+	<foreach name="data" item="val">
+	<tr class="content">
+		<td><input name="id[]" type="checkbox" value="{$val['id']}"></td>
+		<td>{$val['id']}</td>
+		<td>{$val['title']}</td>
+		<td>{$val['categoryHtml']}</td>
+		<td>属性</td>
+		<td>{$val['hits']}</td>
+		<td>{$val['created']|date="Y-m-d",###}</td>
+		<td><a href="{:U('News/add',array('id'=>$val['id']))}">修改</a>|<a href="javascript:if (confirm('确定删除?')) location='{:U('News/delete',array('id'=>$val['id']))}'">删除</a></td>
+	</tr>
+	</foreach>
+	<tr>
+		<td><input name="del" type="button" value="删 除" class="btn blue" /></td>
+		<td colspan="7" class="pages">{$pagerData['linkhtml']}</td>
+	</tr>
+</table>
+</form>
+<include file="Common:footer" />

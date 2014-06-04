@@ -37,7 +37,7 @@ form {
 .top {
 	height: 37px;
 	width: 100%;
-	background: #F0F3F7 /*#e86b1d*/;
+	background: #e86b1d;
 	overflow: hidden;
 	clear: both;
 }
@@ -109,7 +109,7 @@ form {
 .topnav {
 	width: 100%;
 	height: 29px;
-	background:#fff /*url(../images/admin_top_bg.jpg) left -37px repeat-x*/;
+	background:url(../images/admin_top_bg.jpg) left -37px repeat-x;
 	overflow: hidden;
 	clear: both;
 }
