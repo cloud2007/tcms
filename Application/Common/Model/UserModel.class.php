@@ -30,7 +30,7 @@ class UserModel extends CommonModel {
 		$session_userid = session(C('SESSION_ID_ADMIN'));
 		$cookie_userid = cookie(C('COOKIE_ID_ADMIN'));
 
-		if (!$session_userid && !$cookie_userid && $session_userid != $cookie_userid) {
+		if ($session_userid && $cookie_userid && $session_userid != $cookie_userid) {
 			$this->loginOut();
 		}
 		if ($session_userid) {

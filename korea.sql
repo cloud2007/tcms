@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2014 年 05 月 30 日 09:16
+-- 生成日期: 2014 年 06 月 05 日 09:36
 -- 服务器版本: 5.1.28
 -- PHP 版本: 5.3.5
 
@@ -92,25 +92,31 @@ INSERT INTO `tcit_grant` (`id`, `name`, `value`, `status`) VALUES
 
 CREATE TABLE IF NOT EXISTS `tcit_member` (
   `id` int(5) unsigned NOT NULL AUTO_INCREMENT,
-  `lmID` int(2) DEFAULT NULL,
-  `userID` varchar(20) DEFAULT NULL,
-  `realName` varchar(10) DEFAULT NULL,
-  `passWord` varchar(50) DEFAULT NULL,
-  `mailCode` varchar(4) DEFAULT NULL,
-  `grantWord` varchar(50) DEFAULT NULL COMMENT '权限 用“|”分隔多个权限',
-  `sex` int(1) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL,
-  `tel` varchar(20) DEFAULT NULL,
-  `addr` varchar(80) DEFAULT NULL,
-  `avatar` varchar(100) DEFAULT NULL,
-  `email` varchar(20) DEFAULT NULL,
-  `youbian` int(6) DEFAULT NULL,
-  `status` int(1) DEFAULT NULL,
-  `creatTime` int(10) DEFAULT NULL,
-  `loginTime` int(10) DEFAULT NULL,
-  `attributeData` text,
+  `lm_id` int(2) unsigned NOT NULL DEFAULT '0',
+  `username` varchar(20) NOT NULL DEFAULT '',
+  `realname` varchar(10) NOT NULL DEFAULT '',
+  `password` varchar(32) NOT NULL,
+  `vcode` varchar(4) NOT NULL DEFAULT '',
+  `grant` varchar(50) NOT NULL DEFAULT '' COMMENT '权限 用“|”分隔多个权限',
+  `sex` int(1) unsigned NOT NULL DEFAULT '0',
+  `phone` varchar(20) NOT NULL DEFAULT '',
+  `tel` varchar(20) NOT NULL DEFAULT '',
+  `addr` varchar(100) NOT NULL DEFAULT '',
+  `avatar` varchar(100) NOT NULL DEFAULT '',
+  `email` varchar(20) NOT NULL DEFAULT '',
+  `youbian` int(6) NOT NULL DEFAULT '0',
+  `status` int(1) NOT NULL DEFAULT '0',
+  `created` int(10) NOT NULL DEFAULT '0',
+  `lastdate` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
+
+--
+-- 转存表中的数据 `tcit_member`
+--
+
+INSERT INTO `tcit_member` (`id`, `lm_id`, `username`, `realname`, `password`, `vcode`, `grant`, `sex`, `phone`, `tel`, `addr`, `avatar`, `email`, `youbian`, `status`, `created`, `lastdate`) VALUES
+(37, 0, '3293304', '', 'c4ca4238a0b923820dcc509a6f75849b', '', '', 0, '', '', '', '', '190296465@qq.com', 0, 1, 1401957559, 0);
 
 -- --------------------------------------------------------
 
@@ -328,7 +334,7 @@ INSERT INTO `tcit_news` (`id`, `lm_id`, `category`, `title`, `title1`, `title2`,
 (10, 1, 3, '链接标题', '', '', '', '', '', '', '', '', '', '', '', '', '', 'http://www.google.com.cn', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', 0, 1395108431, 0),
 (11, 1, 3, '1', '', '', '', '', '', '', '', '', '', '', '', '', '', '#', '', '', '', '', '', '', '', '/201403/20140318_101341_8608.jpg', '', '', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 1, '', '', 0, 1395108774, 0),
 (12, 1, 3, '2', '', '', '', '', '', '', '', '', '', '', '', '', '', '#', '', '', '', '', '', '', '', '/201403/20140318_101358_1396.jpg', '', '', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 2, '', '', 0, 1395108828, 0),
-(13, 1, 3, '活动名称1', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '标题名称标题名称', '', '', '', '', '', '/active/201403/20140318_103404_9798.jpg', '/active/201403/20140318_103407_1370.jpg', '/active/201403/20140318_103407_1370.jpg', '', '', '', '', '', 1, 0, 0, 0, 0, 0, 0, 0, 1, '', '', 0, 1395109976, 0),
+(13, 1, 3, '活动名称1', '作品展示', '作品展示', '', '', '', '', '', '', '', '', '', '', '', '', '', '标题名称标题名称', '', '', '', '', '', '/active/201403/20140318_103404_9798.jpg', '/active/201403/20140318_103407_1370.jpg', '/active/201403/20140318_103407_1370.jpg', '', '', '', '', '', 1, 0, 0, 0, 0, 0, 0, 0, 1, '', '', 0, 1395109976, 0),
 (14, 1, 2, '关于我们', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '关于我们关于我们', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', 0, 1395110440, 0),
 (15, 1, 2, '联系我们', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '联系我们', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', 0, 1395110504, 0),
 (16, 1, 2, '活动名称122', '作品展示', '作品展示', '', '', '', '', '', '', '', '', '1212', '', '', '', '', '活动名称122', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 12, '', '', 0, 1395110504, 0),

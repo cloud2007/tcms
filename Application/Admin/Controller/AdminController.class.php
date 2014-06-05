@@ -119,7 +119,7 @@ class AdminController extends CommonController {
 	/**
 	 * 退出登陆
 	 */
-	function LoginOut() {
+	function loginOut() {
 		$model = new \Common\Model\UserModel();
 		$model->loginOut;
 		$this->redirect(U('login/index', '', false));

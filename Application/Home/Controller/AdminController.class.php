@@ -11,6 +11,30 @@ namespace Home\Controller;
 
 class AdminController extends CommonController {
 
+	protected $MemberInfo;
+
+	function _initialize() {
+		// 验证登录
+		$memberModel = new \Common\Model\MemberModel();
+		$data = $memberModel->checkLogin();
+		if ($data === false) {
+			$this->loginOut();
+			exit();
+		} else {
+			$this->MemberInfo = $data;
+		}
+		$this->assign('MemberInfo', $this->MemberInfo);
+	}
+
+	/**
+	 * 退出登陆
+	 */
+	function loginOut() {
+		$memberModel = new \Common\Model\MemberModel();
+		$memberModel->loginOut;
+		$this->redirect(U('User/login', '', false));
+	}
+
 }
 
 ?>

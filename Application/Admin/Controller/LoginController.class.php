@@ -29,27 +29,23 @@ class LoginController extends CommonController {
 	function LoginAction() {
 		$username = I('post.username');
 		$password = I('post.password');
-		if (!$username || !$password) {
-			$this->error('用户名密码不能为空！');
-		} else {
-			$model = new \Common\Model\UserModel();
-			$res = $model->LoginAction($username, $password);
-		}
+		$model = new \Common\Model\UserModel();
+		$res = $model->LoginAction($username, $password);
 		if ($res === true) {
 			$this->success('登录成功！');
 		} else {
 			$this->error($res);
 		}
 	}
-        
-        /**
-         * 退出登陆 
-         */
-        function loginOut(){
-            $model =new \Common\Model\UserModel();
-            $model->loginOut();
-            $this->success('退出成功',U('Index/index'));
-        }
+
+	/**
+	 * 退出登陆
+	 */
+	function loginOut() {
+		$model = new \Common\Model\UserModel();
+		$model->loginOut();
+		$this->success('退出成功', U('Index/index'));
+	}
 
 }
 
