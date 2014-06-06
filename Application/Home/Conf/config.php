@@ -13,7 +13,8 @@ return array(
 	'TMPL_ACTION_ERROR' => 'Common:error', // 正确跳转对应的模板文件
 	'TMPL_ACTION_SUCCESS' => 'Common:success', // 错误跳转对应的模板文件
 	'AUTHCODE_KEY' => 'www.tcit123.com', //加密狗
-	'AUTO_TURN_PAGE_TIME' => '3000', // 自动跳转页面默认时间(单位S)
+	'AUTO_SUCCESS_PAGE_TIME' => '1', // 自动跳转页面默认时间(单位S)
+	'AUTO_ERROR_PAGE_TIME' => '3', // 自动跳转页面默认时间(单位S)
 
 	/* Cookie Session 设置 */
 	'COOKIE_EXPIRE' => '', // Coodie有效期
@@ -26,12 +27,6 @@ return array(
 	'DATA_CACHE_TYPE' => 'file',
 	'DATA_CACHE_PREFIX' => 'TCIT_',
 	'DATA_CACHE_TIME' => 3600, //
-
-	/* SYSTEM COOKIE SESSION */
-	'SESSION_ID_HOME' => 'uid',
-	'SESSION_CODE_HOME' => 'ucode',
-	'COOKIE_ID_HOME' => 'uid',
-	'COOKIE_CODE_HOME' => 'ucode', //
 
 	/* MEMBER AUTH */
 	'MEMBER_AUTH_CHECK' => '', //email , ''

@@ -9,20 +9,11 @@
 
 namespace Admin\Controller;
 
-class MemberController extends AdminController {
+class MessageController extends AdminController {
 
 	function index() {
 		parent::indexInitialize();
 		parent::commonIndex();
-	}
-
-	function add() {
-		parent::indexInitialize();
-		parent::commonAdd();
-	}
-
-	function save() {
-		parent::commonSave();
 	}
 
 	function delete() {

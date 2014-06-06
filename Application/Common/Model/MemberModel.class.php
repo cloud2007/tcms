@@ -11,8 +11,8 @@ namespace Common\Model;
 
 class MemberModel extends CommonModel {
 
-	private $userID = '';
-	private $userCode = '';
+	private $memberID = '';
+	private $memberCode = '';
 	protected $_auto = array(
 		array('created', 'time', 1, 'function'), //对created字段在新增的时候写入当前时间戳
 		array('password', 'password', 3, 'callback'),
@@ -28,13 +28,13 @@ class MemberModel extends CommonModel {
 	 * 初始化
 	 */
 	public function _initialize() {
-		$session_userid = session(C('SESSION_ID_HOME'));
-		$cookie_userid = cookie(C('COOKIE_ID_HOME'));
-		if (!$session_userid && !$cookie_userid && $session_userid != $cookie_userid) {
+		$session_memberid = session(C('SESSION_ID_HOME'));
+		$cookie_memberid = cookie(C('COOKIE_ID_HOME'));
+		if ($session_memberid && $cookie_memberid && $session_memberid != $cookie_memberid) {
 			$this->loginOut();
 		}
-		$this->userID = session(C('SESSION_ID_HOME'));
-		$this->userCode = session(C('SESSION_CODE_HOME'));
+		$this->memberID = session(C('SESSION_ID_HOME'));
+		$this->memberCode = session(C('SESSION_CODE_HOME'));
 	}
 
 	/**
@@ -71,8 +71,8 @@ class MemberModel extends CommonModel {
 	 * @return array 用户信息
 	 */
 	function checkLogin() {
-		$res = $this->find($this->userID);
-		if (md5($res['id'] . $res['username'] . $res['password']) != \Common\Org\Util::authcode($this->userCode))
+		$res = $this->find($this->memberID);
+		if (md5($res['id'] . $res['username'] . $res['password']) != \Common\Org\Util::authcode($this->memberCode))
 			return FALSE;
 		if ($res['status'] != 1)
 			return FALSE;

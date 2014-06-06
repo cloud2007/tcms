@@ -29,18 +29,11 @@ class UserModel extends CommonModel {
 	public function _initialize() {
 		$session_userid = session(C('SESSION_ID_ADMIN'));
 		$cookie_userid = cookie(C('COOKIE_ID_ADMIN'));
-
 		if ($session_userid && $cookie_userid && $session_userid != $cookie_userid) {
 			$this->loginOut();
 		}
-		if ($session_userid) {
-			$this->userID = session(C('SESSION_ID_ADMIN'));
-			$this->userCode = session(C('SESSION_CODE_ADMIN'));
-		}
-		if ($cookie_userid) {
-			$this->userID = cookie(C('COOKIE_ID_ADMIN'));
-			$this->userCode = cookie(C('COOKIE_CODE_ADMIN'));
-		}
+		$this->userID = session(C('SESSION_ID_ADMIN'));
+		$this->userCode = session(C('SESSION_CODE_ADMIN'));
 	}
 
 	/**

@@ -9,7 +9,7 @@
 
 namespace Home\Controller;
 
-class IndexController extends AdminController {
+class IndexController extends CommonController {
 
 }
 

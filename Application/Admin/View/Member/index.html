@@ -3,33 +3,49 @@
 	<h2 class="title">会 员 管 理</h2>
 	<p>管理导航：<a href="{:U('Member/index')}">会员管理</a><span><input type="text" name="wd" id="wd" value="<?php echo $_GET['wd'];?>" /><input name="search" type="button" value="快速检索" class="search" /></span></p>
 </div>
-<form name="listForm" id="listForm" method="post" action="{:U('News/delete')}">
+<form name="listForm" id="listForm" method="post" action="{:U('Member/delete')}">
 <table width="100%" class="content_table">
 	<tr class="title">
 		<td><input type="checkbox" id="checkAll"> 全选</td>
 		<td><b>ID</b></td>
-		<td><b>{$menuData['title']}</b></td>
-		<td><b>{$menuData['category']}</b></td>
-		<td><b>属　　性</b></td>
-		<td><b>{$menuData['hits']}</b></td>
-		<td><b>{$menuData['created']}</b></td>
+		<td><b>用户名</b></td>
+		<td><b>姓名</b></td>
+		<td><b>性别</b></td>
+		<td><b>手机号</b></td>
+		<td><b>邮箱</b></td>
+		<td><b>状态</b></td>
+		<td><b>锁定</b></td>
+		<td><b>创建时间</b></td>
+		<td><b>最后登录</b></td>
 		<td><b>单项操作</b></td>
 	</tr>
 	<foreach name="data" item="val">
 	<tr class="content">
 		<td><input name="id[]" type="checkbox" value="{$val['id']}"></td>
 		<td>{$val['id']}</td>
-		<td>{$val['title']}</td>
-		<td>{$val['categoryHtml']}</td>
-		<td>属性</td>
-		<td>{$val['hits']}</td>
+		<td>{$val['username']}</td>
+		<td>{$val['realname']}</td>
+		<td>
+			<switch name="val['sex']">
+				<case value="1">男</case>
+				<case value="2">女</case>
+				<default />保密
+			</switch>
+		</td>
+		<td>{$val['phone']}</td>
+		<td>{$val['email']}</td>
+		<td>{$val['status']==1?'已激活':'未激活'}</td>
+		<td>{$val['locked']==0?'正常':'已锁定'}</td>
 		<td>{$val['created']|date="Y-m-d",###}</td>
-		<td><a href="{:U('News/add',array('id'=>$val['id']))}">修改</a>|<a href="javascript:if (confirm('确定删除?')) location='{:U('News/delete',array('id'=>$val['id']))}'">删除</a></td>
+		<td>{$val['lastdate']|date="Y-m-d",###}</td>
+		<td>
+			<a href="{:U('Member/add',array('id'=>$val['id']))}">查看</a>|<a href="javascript:if (confirm('确定删除?')) location='{:U('Member/delete',array('id'=>$val['id']))}'">删除</a>|<equal name="val['status']" value="0"><a href="{:U('Member/opration',array('id'=>$val['id'],'key'=>'status','value'=>1))}">激活</a>|</equal><equal name="val['status']" value="1"><a href="{:U('Member/opration',array('id'=>$val['id'],'key'=>'status','value'=>0))}">禁用</a>|</equal><equal name="val['locked']" value="0"><a href="{:U('Member/opration',array('id'=>$val['id'],'key'=>'locked','value'=>NOW_TIME))}">锁定</a>|</equal><gt name="val['locked']" value="0"><a href="{:U('Member/opration',array('id'=>$val['id'],'key'=>'locked','value'=>0))}">解锁</a>|</gt><a href="{:U('Member/opration',array('id'=>$val['id'],'key'=>'password','value'=>md5(C('DEFAULT_PASSWORD'))))}">重设密码</a>
+		</td>
 	</tr>
 	</foreach>
 	<tr>
 		<td><input name="del" type="button" value="删 除" class="btn blue" /></td>
-		<td colspan="7" class="pages">{$pagerData['linkhtml']}</td>
+		<td colspan="11" class="pages">{$pagerData['linkhtml']}</td>
 	</tr>
 </table>
 </form>

@@ -30,5 +30,16 @@ return array(
 	'LANG_LIST' => 'zh-cn', // 允许切换的语言列表 用逗号分隔
 	'VAR_LANGUAGE' => 'l', // 默认语言切换变量
 	'DOMAIN' => 'http://tcms.chofn.com', //站点的域名
+
+	/* ADMIN COOKIE SESSION */
+	'SESSION_ID_ADMIN' => 'id',
+	'SESSION_CODE_ADMIN' => 'code',
+	'COOKIE_ID_ADMIN' => 'id',
+	'COOKIE_CODE_ADMIN' => 'code',
+	/* HOME COOKIE SESSION */
+	'SESSION_ID_HOME' => 'uid',
+	'SESSION_CODE_HOME' => 'ucode',
+	'COOKIE_ID_HOME' => 'uid',
+	'COOKIE_CODE_HOME' => 'ucode',
 );
 ?>

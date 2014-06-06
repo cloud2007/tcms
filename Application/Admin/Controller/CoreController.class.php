@@ -131,7 +131,6 @@ class CoreController extends AdminController {
 			$moban.="<tr class=\"content\"><td>{$val[0]} [{$key}]</td><td>{$val['value']}</td><td>{$val['message']}</td></tr>";
 		}
 		$moban.='</table>';
-		$moban.='<script type="text/javascript" src="/Static/js/List.js"></script>';
 
 		$this->assign('moban', $moban);
 		$this->display();

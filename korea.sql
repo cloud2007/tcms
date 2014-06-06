@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2014 年 06 月 05 日 09:36
+-- 生成日期: 2014 年 06 月 06 日 09:30
 -- 服务器版本: 5.1.28
 -- PHP 版本: 5.3.5
 
@@ -98,25 +98,29 @@ CREATE TABLE IF NOT EXISTS `tcit_member` (
   `password` varchar(32) NOT NULL,
   `vcode` varchar(4) NOT NULL DEFAULT '',
   `grant` varchar(50) NOT NULL DEFAULT '' COMMENT '权限 用“|”分隔多个权限',
-  `sex` int(1) unsigned NOT NULL DEFAULT '0',
+  `sex` int(1) unsigned NOT NULL DEFAULT '0' COMMENT '0保密1男2女',
   `phone` varchar(20) NOT NULL DEFAULT '',
   `tel` varchar(20) NOT NULL DEFAULT '',
   `addr` varchar(100) NOT NULL DEFAULT '',
   `avatar` varchar(100) NOT NULL DEFAULT '',
   `email` varchar(20) NOT NULL DEFAULT '',
   `youbian` int(6) NOT NULL DEFAULT '0',
-  `status` int(1) NOT NULL DEFAULT '0',
+  `status` int(1) NOT NULL DEFAULT '0' COMMENT '0未激活1正常',
+  `locked` int(10) NOT NULL DEFAULT '0' COMMENT '锁定时间',
   `created` int(10) NOT NULL DEFAULT '0',
   `lastdate` int(10) NOT NULL DEFAULT '0',
+  `deleted` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=40 ;
 
 --
 -- 转存表中的数据 `tcit_member`
 --
 
-INSERT INTO `tcit_member` (`id`, `lm_id`, `username`, `realname`, `password`, `vcode`, `grant`, `sex`, `phone`, `tel`, `addr`, `avatar`, `email`, `youbian`, `status`, `created`, `lastdate`) VALUES
-(37, 0, '3293304', '', 'c4ca4238a0b923820dcc509a6f75849b', '', '', 0, '', '', '', '', '190296465@qq.com', 0, 1, 1401957559, 0);
+INSERT INTO `tcit_member` (`id`, `lm_id`, `username`, `realname`, `password`, `vcode`, `grant`, `sex`, `phone`, `tel`, `addr`, `avatar`, `email`, `youbian`, `status`, `locked`, `created`, `lastdate`, `deleted`) VALUES
+(37, 2, '3293304', '', 'c4ca4238a0b923820dcc509a6f75849b', '', '', 0, '', '', '', '', '190296465@qq.com', 0, 1, 0, 1401957559, 0, 1402043591),
+(38, 2, '112611405', '', 'c4ca4238a0b923820dcc509a6f75849b', '', '', 1, '', '', '', '', '190296465@qq.com', 0, 1, 0, 1401961228, 0, 0),
+(39, 2, '110794204', 'gary', '21218', '', '', 1, '18180820312', '13888888888', '成都市大业路10号', '', '190296465@qq.com', 610000, 0, 0, 1401961456, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -212,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `tcit_menu` (
   `created` varchar(10) NOT NULL DEFAULT '' COMMENT '添加时间',
   `deleted` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '删除时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='MENU菜单表' AUTO_INCREMENT=32 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='MENU菜单表' AUTO_INCREMENT=33 ;
 
 --
 -- 转存表中的数据 `tcit_menu`
@@ -230,7 +234,8 @@ INSERT INTO `tcit_menu` (`id`, `lm_id`, `lm_name`, `menu_name`, `sort_no`, `acti
 (9, 1000, '系统信息管理', '添加用户', 201, 'User', 'add', 1, 0, 'User', '', 1, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '添加时间', 0),
 (10, 1000, '系统信息管理', '修改密码', 208, 'User', 'password', 0, 0, 'Password', '', 1, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '添加时间', 0),
 (11, 1, '测试栏目', '测试菜单', 1, 'News', 'add', 1, 1, 'add', 'news', 1, 'title,content,category,smallpic,bigpic,is_tj,is_gd,title1,title1_select,title2,title2_select,title2_check,title3,content1,content2,name1,name2,upload1,upload2,multipic,is_cd,hits,created,category_title,category_title1,category_title2,category_smallpic,category_bigpic,category_bremark,category_name1,category_name2,category_content1,category_content2,category_multipic', '所属类别', '标题名称', 'Title', 'Keywords', 'Descriptio', '', '', '', '', '', '', '', 'name1', 'name2', '', '', '', '详细内容', 'content1', 'content2', '', '', '', '上传图片', '上传大图', 'upload1', 'upload2', '', '', '', '多图上传', 'is_tj', 'is_gd', '', 'is_cd', '', '', '', '', '浏览次数', 0, '类别名称', 'category_t', 'category_t', 'category_s', 'category_b', 'category_b', 'category_n', 'category_n', 'category_c', 'category_c', 'category_m', '姓名', 'company', 'phone', '', '', '', '', '', '', '作品展示|客片欣赏', '作品展示|客片欣赏', '', '', '', '', '', '', '', '', '添加时间', 0),
-(31, 1, '测试栏目', '类别管理', 1, 'Category', 'index', 0, 1, '', '', 0, 'category_title,category_title1,category_bigpic,category_name2,category_content2,category_multipic', '所属类别', '标题名称', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '详细内容', '', '', '', '', '', '上传图片', '上传大图', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '浏览次数', 0, '类别名称', 'category_t', '', '', 'category_b', '', '', 'category_n', '', 'category_c', 'category_m', '姓名', '单位', '手机号', '电话号码', '传真', '图片', '电子邮件', '邮编', '地址', '', '', '', '', '', '', '', '', '', '', '添加时间', 0);
+(31, 2, '会员管理', '管理', 2, 'Member', 'index', 0, 0, '', '', 1, 'category_title,category_title1,category_bigpic,category_name2,category_content2,category_multipic', '所属类别', '标题名称', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '详细内容', '', '', '', '', '', '上传图片', '上传大图', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '浏览次数', 0, '类别名称', 'category_t', '', '', 'category_b', '', '', 'category_n', '', 'category_c', 'category_m', '姓名', '单位', '手机号', '电话号码', '传真', '图片', '电子邮件', '邮编', '地址', '', '', '', '', '', '', '', '', '', '', '添加时间', 0),
+(32, 3, '在线反馈', '管理', 3, 'Message', 'index', 0, 0, '', '', 1, 'title,created,huifu,uname,company,phone,tel,fax,pic,email,youbian,addr', '', '留言标题', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', 'uname', 'company', 'phone', 'tel', 'fax', 'pic', 'email', 'youbian', 'addr', '', '', '', '', '', '', '', '', '', '', '反馈时间', 0);
 
 -- --------------------------------------------------------
 
@@ -239,24 +244,23 @@ INSERT INTO `tcit_menu` (`id`, `lm_id`, `lm_name`, `menu_name`, `sort_no`, `acti
 --
 
 CREATE TABLE IF NOT EXISTS `tcit_message` (
-  `id` int(5) NOT NULL AUTO_INCREMENT,
-  `lmID` int(2) DEFAULT '0' COMMENT '栏目ID',
-  `newsID` int(5) DEFAULT '0' COMMENT '所属文章ID',
-  `msgID` int(11) DEFAULT '0',
-  `uname` varchar(20) DEFAULT NULL,
-  `company` varchar(20) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL,
-  `tel` varchar(20) DEFAULT NULL,
-  `fax` varchar(20) DEFAULT NULL,
-  `pic` varchar(50) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `youbian` int(6) DEFAULT NULL,
-  `addr` varchar(100) DEFAULT NULL,
-  `title` varchar(20) DEFAULT NULL,
-  `content` text,
-  `creatTime` int(10) DEFAULT NULL,
-  `reContent` text,
-  `reTime` int(10) DEFAULT NULL,
+  `id` int(5) unsigned NOT NULL AUTO_INCREMENT,
+  `lm_id` int(2) unsigned NOT NULL DEFAULT '0' COMMENT '栏目ID',
+  `news_id` int(5) unsigned NOT NULL DEFAULT '0' COMMENT '所属文章ID',
+  `uname` varchar(20) NOT NULL,
+  `company` varchar(20) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `tel` varchar(20) NOT NULL,
+  `fax` varchar(20) NOT NULL,
+  `pic` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `youbian` int(6) NOT NULL,
+  `addr` varchar(100) NOT NULL,
+  `title` varchar(20) NOT NULL,
+  `content` text NOT NULL,
+  `created` int(10) unsigned NOT NULL DEFAULT '0',
+  `re_content` text NOT NULL,
+  `redate` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 

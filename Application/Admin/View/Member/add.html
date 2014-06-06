@@ -2,62 +2,58 @@
 <load href="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/js/SwfUpload/css/upload.css" />
 <load href="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/js/KindEditor/kindeditor.js" />
 <div id="manager">
-	<h2 class="title">菜 单 功 能 管 理</h2>
-	<p>管理导航：<a href="{:U('News/index')}">信息管理</a>&nbsp;|&nbsp;<a href="{:U('News/add')}">信息添加</a></p>
+	<h2 class="title">会 员 管 理</h2>
+	<p>管理导航：<a href="{:U('Member/index')}">会员管理</a></p>
 </div>
-<form name="addForm" id="addForm" method="post" action="{:U('News/save')}">
+<form name="addForm" id="addForm" method="post" action="{:U('Member/save')}">
 	<input type="hidden" name="lm_id" value="{$menuData['lm_id']}" />
 	<input type="hidden" name="id" value="{$data['id']}" />
 	<input type="hidden" name="PageNo" value="<?php echo $PageNo;?>" />
 	<table width="100%" class="content_table">
-		{:W('Tcms/showInput',array('title',$data,$menuData))}
-		
-		{:W('Tcms/showCategory',array('category',$data,$menuData))}
-		
-		{:W('Tcms/showInput',array('title1',$data,$menuData))}
-		{:W('Tcms/showInput',array('title2',$data,$menuData))}
-		{:W('Tcms/showInput',array('title3',$data,$menuData))}
-		{:W('Tcms/showInput',array('title4',$data,$menuData))}
-		{:W('Tcms/showInput',array('title5',$data,$menuData))}
-		{:W('Tcms/showInput',array('title6',$data,$menuData))}
-		{:W('Tcms/showInput',array('title7',$data,$menuData))}
-		{:W('Tcms/showInput',array('title8',$data,$menuData))}
-		{:W('Tcms/showInput',array('title9',$data,$menuData))}
-		{:W('Tcms/showInput',array('title10',$data,$menuData))}
-		
-		{:W('Tcms/showTextarea',array('name1',$data,$menuData))}
-		{:W('Tcms/showTextarea',array('name2',$data,$menuData))}
-		{:W('Tcms/showTextarea',array('name3',$data,$menuData))}
-		{:W('Tcms/showTextarea',array('name4',$data,$menuData))}
-		{:W('Tcms/showTextarea',array('name5',$data,$menuData))}
-		
-		{:W('Tcms/showEditorContent',array('content',$data,$menuData))}
-		{:W('Tcms/showEditorContent',array('content1',$data,$menuData))}
-		{:W('Tcms/showEditorContent',array('content2',$data,$menuData))}
-		{:W('Tcms/showEditorContent',array('content3',$data,$menuData))}
-		{:W('Tcms/showEditorContent',array('content4',$data,$menuData))}
-		{:W('Tcms/showEditorContent',array('content5',$data,$menuData))}
-		
-		{:W('Tcms/showRadio',array('is_tj',$data,$menuData))}
-		{:W('Tcms/showRadio',array('is_gd',$data,$menuData))}
-		{:W('Tcms/showRadio',array('is_ab',$data,$menuData))}
-		{:W('Tcms/showRadio',array('is_cd',$data,$menuData))}
-		{:W('Tcms/showRadio',array('is_ef',$data,$menuData))}
-		{:W('Tcms/showRadio',array('is_gh',$data,$menuData))}
-		{:W('Tcms/showRadio',array('is_jk',$data,$menuData))}
-		{:W('Tcms/showRadio',array('is_mn',$data,$menuData))}
-		
-		{:W('Tcms/showUploadSingle',array('smallpic',$data,$menuData))}
-		{:W('Tcms/showUploadSingle',array('bigpic',$data,$menuData))}
-		{:W('Tcms/showUploadSingle',array('upload1',$data,$menuData))}
-		{:W('Tcms/showUploadSingle',array('upload2',$data,$menuData))}
-		{:W('Tcms/showUploadSingle',array('upload3',$data,$menuData))}
-		{:W('Tcms/showUploadSingle',array('upload4',$data,$menuData))}
-		{:W('Tcms/showUploadSingle',array('upload5',$data,$menuData))}
-		
-		{:W('Tcms/showUploadMulti',array('multipic',$data,$menuData))}
-		
-		{:W('Tcms/showCreated',array('created',$data,$menuData))}
+		<tr>
+			<td width="100">用户名</td>
+			<td class="textleft"><input type="text" name="username" value="{$data['username']}" size="50" /></td>
+		</tr>
+		<tr>
+			<td width="100">真实姓名</td>
+			<td class="textleft"><input type="text" name="realname" value="{$data['realname']}" size="50" /></td>
+		</tr>
+		<tr>
+			<td width="100">性别</td>
+			<td class="textleft"><input type="radio" name="sex" value="0" <equal name="data['sex']" value="0">checked="checked"</equal>> 保密　<input type="radio" name="sex" value="1" <equal name="data['sex']" value="1">checked="checked"</equal>> 男　<input type="radio" name="sex" value="2" <equal name="data['sex']" value="2">checked="checked"</equal>> 女</td>
+		</tr>
+		<tr>
+			<td width="100">手机号</td>
+			<td class="textleft"><input type="text" name="phone" value="{$data['phone']}" size="50" /></td>
+		</tr>
+		<tr>
+			<td width="100">联系电话</td>
+			<td class="textleft"><input type="text" name="tel" value="{$data['tel']}" size="50" /></td>
+		</tr>
+		<tr>
+			<td width="100">电子邮箱</td>
+			<td class="textleft"><input type="text" name="email" value="{$data['email']}" size="50" /></td>
+		</tr>
+		<tr>
+			<td width="100">邮编</td>
+			<td class="textleft"><input type="text" name="youbian" value="{$data['youbian']}" size="50" /></td>
+		</tr>
+		<tr>
+			<td width="100">地址</td>
+			<td class="textleft"><input type="text" name="addr" value="{$data['addr']}" size="50" /></td>
+		</tr>
+		<tr>
+			<td width="100">头像</td>
+			<td class="textleft"><img src="{$data['avatar']}" /></td>
+		</tr>
+		<tr>
+			<td width="100">激活状态</td>
+			<td class="textleft"><input type="radio" name="status" value="0" <equal name="data['status']" value="0">checked="checked"</equal>> 未激活　<input type="radio" name="status" value="1" <equal name="data['status']" value="1">checked="checked"</equal>> 已激活</td>
+		</tr>
+		<tr>
+			<td width="100">锁定状态</td>
+			<td class="textleft"><input type="radio" name="locked" value="0" <equal name="data['locked']" value="0">checked="checked"</equal>> 正常　<input type="radio" name="locked" value="{:NOW_TIME}" <gt name="data['locked']" value="1">checked="checked"</gt>> 锁定</td>
+		</tr>
 	</table>
 	<div class="clearH"></div>
 	<table width="100%" class="content_table">
