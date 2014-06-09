@@ -12,8 +12,8 @@ a.ccc{ text-decoration:none; color:#CCCCCC}
 #manager{ border:1px solid #CFCFCF; margin:0 0 10px 0}
 h2.title{background:url(../images/newlinebg3.gif);line-height:36px;color: #000;text-align:center; font-size:14px; font-weight:normal}
 #manager p{ line-height:30px; padding:0 0 0 10px;}
-#manager p span{float:right; padding:5px 10px 0 0;}
-#manager p input{ margin:0 3px;}
+#manager p span{float:right; padding:7px 10px 0 0;}
+#manager p input,#manager p select{ margin:0 3px; float:left}
 
 table.content_table{ border-collapse:collapse;}
 table.content_table td{border: 1px solid #CFCFCF; height:35px; padding:0 2px; text-align:center}

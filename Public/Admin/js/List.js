@@ -60,14 +60,15 @@ $(function(){
 	})
 	
 	$("input[name='search']").click(function(){
+		var target = $('#target').val();
 		var wd = $('#wd').val();
-		var categoryID = $('#categoryID').val();
-		/*
-		if(wd==false && categoryID==false){
-			alert('没有检索条件');
-			return false;
-		}*/
-		self.location.href="/admin.php/News?wd=" + wd + "&categoryID=" + categoryID;
+		var category = $('#category').val();
+		$url = target + '?';
+		if(wd)
+			$url += 'wd=' + wd + '&';
+		if(category)
+			$url += 'category=' + category;
+		self.location.href=$url;
 	})
 	
 })

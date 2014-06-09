@@ -1,7 +1,12 @@
 <include file="Common:header" />
 <div id="manager">
 	<h2 class="title">会 员 管 理</h2>
-	<p>管理导航：<a href="{:U('Member/index')}">会员管理</a><span><input type="text" name="wd" id="wd" value="<?php echo $_GET['wd'];?>" /><input name="search" type="button" value="快速检索" class="search" /></span></p>
+	<p>管理导航：<a href="{:U('Member/index')}">会员管理</a>
+	<span>
+		<input type="hidden" name="target" id="target" value="{:U('Member/index')}" />
+		<input type="text" name="wd" id="wd" value="{:I('get.wd','','trim')}" /><input name="search" type="button" value="快速检索" class="search" />
+	</span>
+	</p>
 </div>
 <form name="listForm" id="listForm" method="post" action="{:U('Member/delete')}">
 <table width="100%" class="content_table">

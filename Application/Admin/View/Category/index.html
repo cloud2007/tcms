@@ -1,7 +1,12 @@
 <include file="Common:header" />
 <div id="manager">
 	<h2 class="title">菜 单 功 能 管 理</h2>
-	<p>管理导航：<a href="{:U('Category/index')}">信息管理</a>&nbsp;|&nbsp;<a href="{:U('Category/add')}">信息添加</a></p>
+	<p>管理导航：<a href="{:U('Category/index')}">信息管理</a>&nbsp;|&nbsp;<a href="{:U('Category/add')}">信息添加</a>
+	<span>
+		<input type="hidden" name="target" id="target" value="{:U('Category/index')}" />
+		<input type="text" name="wd" id="wd" value="{:I('get.wd','','trim')}" /><input name="search" type="button" value="快速检索" class="search" />
+	</span>
+	</p>
 </div>
 <form name="listForm" id="listForm" method="post" action="{:U('Category/delete')}">
 <table width="100%" class="content_table">

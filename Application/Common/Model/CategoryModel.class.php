@@ -11,8 +11,13 @@ namespace Common\Model;
 
 class CategoryModel extends CommonModel {
 
-	protected $_auto = array();
-	protected $_validate = array();
+	protected $_auto = array(
+		array('created', 'strtotime', 3, 'function'), //对created字段在新增的时候写入当前时间戳
+	);
+	protected $_validate = array(
+		array('lm_id', 'require', '栏目ID不能为空'),
+	);
+	public $_selectFields = 'category_title';
 
 	/**
 	 * 写入数据之前处理allow_field

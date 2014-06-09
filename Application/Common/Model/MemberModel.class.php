@@ -23,6 +23,7 @@ class MemberModel extends CommonModel {
 		array('username', '', '该用户名已存在', 1, 'unique', 3),
 		array('password', 'require', '密码不能为空'),
 	);
+	public $_selectFields = 'username|realname';
 
 	/**
 	 * 初始化

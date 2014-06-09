@@ -14,7 +14,7 @@ class UserModel extends CommonModel {
 	private $userID = '';
 	private $userCode = '';
 	protected $_auto = array(
-		array('created', 'time', 1, 'function'), //对created字段在新增的时候写入当前时间戳
+		array('created', 'strtotime', 3, 'function'), //对created字段在新增的时候写入当前时间戳
 		array('password', 'password', 3, 'callback'),
 		array('password', '', 2, 'ignore'),
 	);
@@ -22,6 +22,7 @@ class UserModel extends CommonModel {
 		array('username', 'require', '用户名不能为空'),
 		array('username', '', '该用户名已存在', 1, 'unique', 3),
 	);
+	public $_selectFields = 'username';
 
 	/**
 	 * 初始化

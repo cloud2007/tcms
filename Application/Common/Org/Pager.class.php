@@ -32,8 +32,8 @@ class Pager {
 		$this->Links = array();
 		$this->Total = $TotalItems;
 		$this->PageSize = $PageSizeNum;
-		$this->Url = $url.'?';
-		//$this->Url=Util::htmlquery();
+		//$this->Url = $url.'?';
+		$this->Url = Util::htmlquery();
 		$this->Current = $current;
 
 		$this->PageCount = ceil($this->Total / $this->PageSize);

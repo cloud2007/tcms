@@ -26,10 +26,9 @@
 		<div class="menuact"> <a href="javascript:;" id="togglemenu">隐藏菜单</a></div>
 		<div class="sysmsg">
 			<ul>
-				<li>1</li>
-				<li>2</li>
-				<li>3</li>
-				<li>4</li>
+				<foreach name="data" item="val">
+				<li><a href="{$val['url']}" target="_blank">{$val['title']}</a></li>
+				</foreach>
 			</ul>
 		</div>
 		<div class="scroll"><a href="{:C('DEFAUIT_SYSTEM_TARGET')}" target='_blank'>官方网站</a> </div>

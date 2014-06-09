@@ -62,6 +62,11 @@ class AdminController extends CommonController {
 		$pageNum = ($pageNo - 1) * $this->pagesize;
 		$limit = "{$pageNum},{$this->pagesize}";
 
+		if (I('get.category', '', 'intval'))
+			$this->map['category'] = array('EQ', I('get.category'));
+		if (I('get.wd', '', 'trim') && $model->_selectFields)
+			$this->map[$model->_selectFields] = array('LIKE', '%' . I('get.wd') . '%');
+
 		$count = $model->where($this->map)->count();
 
 		$pager = new \Common\Org\Pager();

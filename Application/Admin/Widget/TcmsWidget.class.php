@@ -125,6 +125,23 @@ class TcmsWidget extends \Think\Controller {
 	}
 
 	/**
+	 * 回复文本区域
+	 * @param type $field
+	 * @return string|null
+	 */
+	public function showRecontent($field, $data, $menuData) {
+		if (in_array('huifu', $menuData['allow_field'])) {
+			$returnStr = '<tr><td>';
+			$returnStr .= '回复';
+			$returnStr .= '</td><td class="textleft">';
+			$returnStr .= '<textarea cols="80" rows="8" name="' . $field . '">' . $data[$field] . '</textarea>';
+			$returnStr .='</td></tr>';
+			return $returnStr;
+		}
+		return NULL;
+	}
+
+	/**
 	 * 编辑器区域
 	 * @return string|null
 	 */

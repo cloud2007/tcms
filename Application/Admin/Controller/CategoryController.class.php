@@ -15,6 +15,10 @@ class CategoryController extends AdminController {
 		parent::indexInitialize();
 		$this->order = 'sort asc';
 		$model = new \Common\Model\CategoryModel();
+		if (I('get.category', '', 'intval'))
+			$this->map['category'] = array('EQ', I('get.category'));
+		if (I('get.wd', '', 'trim') && $model->_selectFields)
+			$this->map[$model->_selectFields] = array('LIKE', '%' . I('get.wd') . '%');
 		$data = $model->where($this->map)->order($this->order)->select();
 		$treeModel = new \Common\Org\Tree($data);
 		$data = $treeModel->getArray();

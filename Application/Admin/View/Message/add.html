@@ -1,0 +1,51 @@
+<include file="Common:header" />
+<load href="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/js/SwfUpload/css/upload.css" />
+<load href="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/js/KindEditor/kindeditor.js" />
+<div id="manager">
+	<h2 class="title">菜 单 功 能 管 理</h2>
+	<p>管理导航：<a href="{:U('Message/index')}">信息管理</a></p>
+</div>
+<form name="addForm" id="addForm" method="post" action="{:U('Message/save')}">
+	<input type="hidden" name="lm_id" value="{$menuData['lm_id']}" />
+	<input type="hidden" name="id" value="{$data['id']}" />
+	<input type="hidden" name="PageNo" value="<?php echo $PageNo;?>" />
+	<table width="100%" class="content_table">
+		{:W('Tcms/showInput',array('title',$data,$menuData))}
+		{:W('Tcms/showInput',array('uname',$data,$menuData))}
+		{:W('Tcms/showInput',array('phone',$data,$menuData))}
+		{:W('Tcms/showInput',array('tel',$data,$menuData))}
+		{:W('Tcms/showInput',array('fax',$data,$menuData))}
+		{:W('Tcms/showInput',array('email',$data,$menuData))}
+		{:W('Tcms/showInput',array('addr',$data,$menuData))}
+		{:W('Tcms/showInput',array('company',$data,$menuData))}
+		{:W('Tcms/showInput',array('youbian',$data,$menuData))}
+		{:W('Tcms/showRecontent',array('re_content',$data,$menuData))}
+		{:W('Tcms/showCreated',array('created',$data,$menuData))}
+	</table>
+	<div class="clearH"></div>
+	<table width="100%" class="content_table">
+		<tr>
+			<td><input type="submit" class="btn green big" value="确 定"> <input type="button" class="btn big" value="返 回" onClick="self.history.back();"></td>
+		</tr>
+	</table>
+</form>
+<load href="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/js/SwfUpload/scripts/swfobject.js" />
+<load href="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/js/SwfUpload/scripts/jquery.uploadify.v2.1.0.min.js" />
+<load href="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/js/SwfUpload/myupload.js" />
+<load href="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/js/My97DatePicker/WdatePicker.js" />
+<script type="text/javascript">
+$(function(){
+	var items = ['source','undo','redo','fontsize','|','forecolor', 'hilitecolor', 'bold', 'italic', 'underline','removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright','|', 'emoticons', 'image', 'multiimage', 'link'];
+	KindEditor.ready(function(K) {
+		K.create('textarea[class="content"]', {
+			uploadJson : '/admin.php/upload/kindEditor',
+			fileManagerJson : '/admin.php/upload/fileManager',
+			urlType : 'absolute',
+			allowFileManager : true,
+			//afterBlur:function(){},
+			//items : items
+		});
+	});
+})
+</script>
+<include file="Common:footer" />

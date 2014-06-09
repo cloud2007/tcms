@@ -1,0 +1,9 @@
+<form action="{:U('Message/add')}" method="post" id="messageForm">
+	<input type="hidden" name="lm_id" value="3" />
+	用户名：<input value="{:rand(102123,132133213)}" name="uname" type="text" /><br />
+	邮箱：<input value="190296465@qq.com" name="email" type="text" /><br />
+	phone：<input value="18180820312" name="phone" type="text" /><br />
+	tel：<input value="18180820312" name="18180820312" type="text" /><br />
+	content：<textarea name="content">{:time()}</textarea><br />
+	<input type="submit" value="立即注册">
+</form>

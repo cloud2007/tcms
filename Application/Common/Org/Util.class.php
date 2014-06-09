@@ -165,7 +165,7 @@ class Util {
 	}
 
 	public static function htmlquery() {
-		$effectParams = array_filter($_GET);
+		$effectParams = array_filter(I('get.'));
 		unset($effectParams['PageNo']);
 		$htmlquery = http_build_query($effectParams);
 		if ($htmlquery)

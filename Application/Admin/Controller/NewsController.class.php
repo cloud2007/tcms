@@ -13,6 +13,11 @@ class NewsController extends AdminController {
 
 	function index() {
 		parent::indexInitialize();
+		$categoryModel = new \Common\Model\CategoryModel();
+		$cateData = $categoryModel->where($this->map)->order('sort asc')->select();
+		$treeModel = new \Common\Org\Tree($cateData);
+		$cateData = $treeModel->getArray();
+		$this->assign('cateData', $cateData);
 		parent::commonIndex();
 	}
 
