@@ -797,6 +797,33 @@ class Util {
 		return $mail->Send() ? true : $mail->ErrorInfo;
 	}
 
+	/*
+	 * 读取目录下所有文件 返回数组
+	 */
+
+	public static function MyScandir($FilePath = './', $Order = 0) {
+		$FilePath = opendir($FilePath);
+		while (false !== ($filename = readdir($FilePath))) {
+			$FileAndFolderAyy[] = $filename;
+		}
+		$Order == 0 ? sort($FileAndFolderAyy) : rsort($FileAndFolderAyy);
+		return $FileAndFolderAyy;
+	}
+
+	/**
+	 * 下载文件
+	 * @param type $fileName
+	 */
+	public static function DownloadFile($fileName) {
+		ob_end_clean();
+		header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+		header('Content-Description: File Transfer');
+		header('Content-Type: application/octet-stream');
+		header('Content-Length: ' . filesize($fileName));
+		header('Content-Disposition: attachment; filename=' . basename($fileName));
+		readfile($fileName);
+	}
+
 }
 
 ?>

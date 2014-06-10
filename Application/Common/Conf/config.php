@@ -23,13 +23,14 @@ return array(
 	'ONLINE_LIMIT' => '999999', // 统计是否在线 超时时间(s)
 	'URL_CASE_INSENSITIVE' => true, // url 不区分大小写
 	'URL_ROUTER_ON' => true, // 是否启用路由
-	'URL_MODEL' => 2, // 如果你的环境不支持PATHINFO 请设置为3
+	'URL_MODEL' => 2, // PATHINFO 请设置为3
 	'URL_HTML_SUFFIX' => '.action', // url 路由页面后缀名
 	'LANG_SWITCH_ON' => true, // 开启语言包功能
-	'LANG_AUTO_DETECT' => true, // 自动侦测语言 开启多语言功能后有效
-	'LANG_LIST' => 'zh-cn', // 允许切换的语言列表 用逗号分隔
-	'VAR_LANGUAGE' => 'l', // 默认语言切换变量
-	'DOMAIN' => 'http://tcms.chofn.com', //站点的域名
+	'LANG_AUTO_DETECT' => true, // 自动侦测语言
+	'LANG_LIST' => 'zh-cn', // 允许切换的语言列表
+	'VAR_LANGUAGE' => 'l', // 默认语言
+	'DOMAIN' => '', //站点的域名
+	'REMOTE_AUTH_CODE' => '7E2FD76E-937A-3D87-BFEA-829DEAD1C079', //
 
 	/* ADMIN COOKIE SESSION */
 	'SESSION_ID_ADMIN' => 'id',

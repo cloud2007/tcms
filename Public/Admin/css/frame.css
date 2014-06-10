@@ -42,6 +42,7 @@ form {
 	clear: both;
 }
 .top .top_logo {
+	background:url(../images/admin_top_logo.gif) no-repeat;
 	width: 170px;
 	height: 37px;
 	float: left;
@@ -109,7 +110,7 @@ form {
 .topnav {
 	width: 100%;
 	height: 29px;
-	background:url(../images/admin_top_bg.jpg) left -37px repeat-x;
+	background:#628DB6 url(../images/admin_top_bg.jpg) left -37px repeat-x;
 	overflow: hidden;
 	clear: both;
 }

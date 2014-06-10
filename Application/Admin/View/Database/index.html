@@ -1,0 +1,59 @@
+<include file="Common:header" />
+<div id="manager">
+	<h2 class="title">数 据 库 管 理</h2>
+	<p>管理导航：<a href="{:U('Other/index')}">数据库管理</a></p>
+</div>
+<table width="100%" class="content_table">
+	<tr class="title">
+		<td>文件名</td>
+		<td>备份时间</td>
+		<td>文件大小(KB)</td>
+		<td>管理选项</td>
+	</tr>
+	<foreach name="data" item="val">
+	<tr>
+		<td>{$val}</td>
+		<td>{:date('Y-m-d H:i:s',filemtime($path.$val))}</td>
+		<td>{:number_format(filesize($path.$val)/1024,1)}</td>
+		<td><a href="{:U('Database/index',array('action'=>'download','file'=>$val))}">下载</a>|<a onClick="return confirm('请在确定还原之前先备份当前数据库,确定还原到当前备份吗?');" href="{:U('Database/index',array('action'=>'restore','file'=>$val))}">还原</a>|<a onClick="return confirm('确定删除该备份文件吗?');" href="?action=del&file={$val}">删除</a></td>
+	</tr>
+	</foreach>
+	<tr>
+		<td colspan="4"><input type="button" value="备份数据库" class="btn blue" onClick="javascript:location.href='{:U('Database/index',array('action'=>'backup'))}'"></td>
+	</tr>
+</table>
+<table style="padding:10px">
+	<tr>
+		<td style="color:#333333; line-height:20px;">
+			注：1、本操作只对数据库中当前网站数据(表前缀为 "{:C('DB_PREFIX')}" 的表)进行备份。如果您的数据库中有多个网站，其它站点不受影响。<br />
+			　　2、备份后的数据可以进行还原操作或通过 phpMyAdmin 导入。
+		</td>
+	</tr>
+</table>
+<!--div id="manager">
+	<h2 class="title">数 据 库 管 理</h2>
+	<p>管理导航：<a href="{:U('Other/index')}">数据库管理</a></p>
+</div>
+<form name="backup" id="backup" method="post" action="{:U('Other/backup')}">
+	<table width="100%" class="content_table">
+		<tr>
+			<td colspan="2"><font color="#FF0000">&nbsp;&nbsp;Tips:如不了解后台数据逻辑,请一次性备份所有数据!保存文件名不填写则自动生成!</font></td>
+		</tr>
+		<tr>
+			<td width="120">数据表</td>
+			<td class="textleft">
+				<foreach name="data" key="key" item="val">
+				<input type="checkbox" name="table[]" value="{$key}" checked="checked" />&nbsp;{$val}&nbsp;&nbsp;
+				</foreach>
+			</td>
+		</tr>
+		<tr>
+			<td width="120">备份文件名</td>
+			<td class="textleft"><input type="text" name="filename" /></td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="submit" class="btn" value=" 确 定 "></td>
+		</tr>
+	</table>
+</form-->
+<include file="Common:footer" />
