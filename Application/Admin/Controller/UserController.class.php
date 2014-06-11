@@ -50,7 +50,7 @@ class UserController extends AdminController {
 		$map = array();
 		$map['deleted'] = array('EQ', 0);
 		$map['use'] = array('EQ', 1);
-		$map['id'] = array('GT', 7);
+		$map['id'] = array('NOT IN', array(1,5));
 		$grantList = $model->where($map)->select();
 		$this->assign('grantList', $grantList);
 

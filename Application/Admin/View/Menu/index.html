@@ -25,6 +25,7 @@
 								<equal name="v['manage']" value="1">| <a href="{:U($v['action'].'/index',array('menu_id'=>$v['id'],'lm_id'=>$v['lm_id']))}" target="main">管理</a></equal>
 							</li>
 							{:strpos($v['allow_field'],'category')?'<li><a href="' . U('Category/index',array('menu_id'=>$v['id'],'lm_id'=>$v['lm_id'])) . '">分类管理</a></li>':''}
+							<equal name="v['seo']" value="1"><li><a href="{:U('Seo/index',array('menu_id'=>$v['id'],'lm_id'=>$v['lm_id']))}" target="main">SEO管理</a></li></equal>
 						</foreach>
 					</ul>
 				</dd>

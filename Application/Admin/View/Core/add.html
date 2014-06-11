@@ -19,15 +19,15 @@
 			<td>方法名</td>
 			<td class="textleft"><input type="text" name="function" value="{$data['function']}" size="20" /></td>
 			<td>栏 目 ID</td>
-			<td class="textleft"><input name="lm_id" type="text" value="{$data['lm_id']}" size="8" /></td>
+			<td class="textleft"><input name="lm_id" type="text" value="{$data['lm_id']}" size="3" style="text-align:center" /> 排序位置 <input name="sort_no" type="text" value="{$data['sort_no']}" size="3" style="text-align:center" /></td>
 		</tr>
 		<tr>
 			<td>创建管理链接</td>
 			<td class="textleft"><input type="radio" name="manage" value="1" <equal name="data['manage']" value="1">checked="checked"</equal>> 是　　<input type="radio" name="manage" value="0" <equal name="data['manage']" value="0">checked="checked"</equal>> 否</td>
 			<td>启用排序</td>
 			<td class="textleft"><input type="radio" name="sort" value="1" <equal name="data['sort']" value="1">checked="checked"</equal>> 是　　<input type="radio" name="sort" value="0" <equal name="data['sort']" value="0">checked="checked"</equal>> 否</td>
-			<td>排序位置</td>
-			<td class="textleft"><input name="sort_no" type="text" value="{$data['sort_no']}" size="6" /></td>
+			<td>创建SEO链接</td>
+			<td class="textleft"><input type="radio" name="seo" value="1" <equal name="data['seo']" value="1">checked="checked"</equal>> 是　　<input type="radio" name="seo" value="0" <equal name="data['seo']" value="0">checked="checked"</equal>> 否</td>
 		</tr>
 		<tr>
 			<td>禁止添加</td>

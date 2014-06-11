@@ -14,7 +14,7 @@
 			<td class="textleft">
 				<input type="checkbox" name="grant[]" value="0" {:in_array(0,$data['grantArray'])?'checked="checked"':''} />管理员　
 				<foreach name="grantList" item="val">
-					<input type="checkbox" name="grant[]" value="{$val['id']}" {:in_array($val["id"],$data['grantArray'])?'checked="checked"':''} />{$val['menu_name']}　
+					<input type="checkbox" name="grant[]" value="{$val['id']}" {:in_array($val["id"],$data['grantArray'])?'checked="checked"':''} />{$val['id']>10 ? $val['lm_name'] : $val['menu_name']}　
 				</foreach>
 			</td>
 		</tr>

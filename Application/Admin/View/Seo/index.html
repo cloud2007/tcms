@@ -1,0 +1,29 @@
+<include file="Common:header" />
+<div id="manager">
+	<h2 class="title">SEO 功 能 管 理</h2>
+	<p>管理导航：<a href="{:U('Seo/index')}">SEO管理</a></p>
+</div>
+<form name="addForm" id="addForm" method="post" action="{:U('Seo/index')}">
+	<input type="hidden" name="id" value="{$data['id']}" />
+	<table width="100%" class="content_table">
+		<tr>
+			<td width="100">TITLE:</td>
+			<td class="textleft"><input type="text" name="seo_title" value="{$data['seo_title']}" style="width:80%" /></td>
+		</tr>
+		<tr>
+			<td>KEYWORDS:</td>
+			<td class="textleft"><textarea name="seo_keywords" rows="5" style="width:80%">{$data['seo_keywords']}</textarea></td>
+		</tr>
+		<tr>
+			<td>DESCRIPTION:</td>
+			<td class="textleft"><textarea name="seo_description" rows="5" style="width:80%">{$data['seo_description']}</textarea></td>
+		</tr>
+	</table>
+	<div class="clearH"></div>
+	<table width="100%" class="content_table">
+		<tr>
+			<td><input type="submit" class="btn green big" value="确 定"> <input type="button" class="btn big" value="返 回" onClick="self.history.back();"></td>
+		</tr>
+	</table>
+</form>
+<include file="Common:footer" />
