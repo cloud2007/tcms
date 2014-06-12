@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-<title>{$title|default=C('DEFAUIT_SYSTEM_TITLE')}</title>
+<title>{$web_title}{$web_title ? '-' : ''}{$seoData['seo_title']|default=C('DEFAUIT_SYSTEM_TITLE')}{$seoData['seo_title'] ? '-' : ''}{$settingData['title']}</title>
+<meta name="keywords" content="{$web_keywords ? $web_keywords : ($seoData['seo_keywords'] ? $seoData['seo_keywords'] : ($settingData['keywords'] ? $settingData['keywords'] : C('DEFAUIT_SYSTEM_TITLE')))}" />
+<meta name="description" content="{$web_description ? $web_description : ($seoData['seo_description'] ? $seoData['seo_description'] : ($settingData['description'] ? $settingData['description'] : C('DEFAUIT_SYSTEM_TITLE')))}" />
 <load href="__PUBLIC__/{:C('HOME_THEME_PATH')}/css/reset.css" />
 <load href="__PUBLIC__/{:C('HOME_THEME_PATH')}/css/style.css" />
 <load href="__PUBLIC__/{:C('HOME_THEME_PATH')}/js/Jquery-1.4.2.min.js" />

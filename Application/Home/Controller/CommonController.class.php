@@ -11,6 +11,30 @@ namespace Home\Controller;
 
 class CommonController extends \Think\Controller {
 
+	protected $menu_id;
+	protected $lm_id;
+	protected $map;
+	protected $order;
+	protected $pagesize;
+	protected $url;
+
+	function _initialize() {
+		$settingModel = new \Common\Model\SettingModel();
+		$settingData = $settingModel->select();
+		$_data = array();
+		foreach ($settingData as $value) {
+			$_data[$value['key']] = $value['value'];
+		}
+		$settingData = $_data;
+		unset($_data);
+		$this->assign('settingData', $settingData);
+		if ($this->lm_id) {
+			$menuModel = new \Common\Model\MenuModel();
+			$seoData = $menuModel->where('`lm_id`=' . $this->lm_id)->getField('lm_id,seo_title,seo_keywords,seo_description');
+			$this->assign('seoData', $seoData[$this->lm_id]);
+		}
+	}
+
 	function indexInitialize() {
 		$map = array();
 		$map['deleted'] = array('EQ', 0);
