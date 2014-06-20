@@ -1,0 +1,34 @@
+<include file="Common:header" />
+
+<div class="clearH"></div>
+<div id="main">
+	<div class="main_left">
+		<div class="left"></div>
+		<div class="main_left_content">
+			<div class="title2">关于我们<i>about</i></div>
+			<ul class="ulList">
+				<foreach name="aboutMenuData" key="key" item="val">
+					<li><a href="{:U('About/index',array('id'=>$val['id']))}" <if condition="$val['id'] == $data['id']">class="current"</if> >{$val['title']}</a><span>{$val['title2']}</span></li>
+				</foreach>
+			</ul>
+		</div>
+		<div class="right"></div>	
+	</div>
+	<div class="main_right">
+		<div class="left"></div>
+		<div class="main_right_content">
+			<div class="title3">经典案例<span><a href="/">首页</a> > <a href="{:U('News/index')}">经典案例</a></span></div>
+			<div class="main_right_content_content">
+				<ul id="ulList">
+					<foreach name="data" item="val">
+					<li><div class="box"><a href="{:U('Case/detail',array('id'=>$val['id']))}" target="_blank"><img src="/Public/Uploads{$val['smallpic']}" width="139" height="108"></a></div><a href="{:U('Case/detail',array('id'=>$val['id']))}">{$val['title']}</a></li>
+					</foreach>
+				</ul>
+				<div class="clear"></div>
+				<div class="pages">{$pagerData['linkhtml']}</div>
+			</div>
+		</div>
+		<div class="right"></div>	
+	</div>
+</div>
+<include file="Common:footer" />

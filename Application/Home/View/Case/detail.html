@@ -1,0 +1,33 @@
+<include file="Common:header" />
+
+<div class="clearH"></div>
+<div id="main">
+	<div class="main_left">
+		<div class="left"></div>
+		<div class="main_left_content">
+			<div class="title2">关于我们<i>about</i></div>
+			<ul class="ulList">
+				<foreach name="aboutMenuData" key="key" item="val">
+					<li><a href="{:U('About/index',array('id'=>$val['id']))}" <if condition="$val['id'] == $data['id']">class="current"</if> >{$val['title']}</a><span>{$val['title2']}</span></li>
+				</foreach>
+			</ul>
+		</div>
+		<div class="right"></div>
+	</div>
+	<div class="main_right">
+		<div class="left"></div>
+		<div class="main_right_content">
+			<div class="title3">经典案例<span><a href="/">首页</a> > <a href="{:U('Case/index')}">经典案例</a> > <a href="{:U('Case/index',array('id'=>$data['id']))}">正文</a></span></div>
+			<div class="artTitle">
+				<h1>{$data['title']}</h1>
+				<p>作者：本站　　出处：原创　　时间：{$data['created']|date='Y-m-d H:i:s',###}</p>
+			</div>
+			<div class="main_right_content_content">
+				<p align="center"><img src="/Public/Uploads{$data['smallpic']}" width="139" height="108" /></p>
+				{$data['content']|htmlspecialchars_decode}
+			</div>
+		</div>
+		<div class="right"></div>	
+	</div>
+</div>
+<include file="Common:footer" />

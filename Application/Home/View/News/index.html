@@ -1,0 +1,33 @@
+<include file="Common:header" />
+
+<div class="clearH"></div>
+<div id="main">
+	<div class="main_left">
+		<div class="left"></div>
+		<div class="main_left_content">
+			<div class="title2">新闻动态<i>news</i></div>
+			<ul class="ulList">
+				<foreach name="menuData" key="key" item="val">
+					<li><a href="{:U('News/index',array('id'=>$val['id']))}" <if condition="$val['id'] == $menuDataInfo['id']">class="current"</if> >{$val['category_title']}</a><span>{$val['category_title1']}</span></li>
+				</foreach>
+			</ul>
+		</div>
+		<div class="right"></div>	
+	</div>
+	<div class="main_right">
+		<div class="left"></div>
+		<div class="main_right_content">
+			<div class="title3">新闻动态<span><a href="/">首页</a> > <a href="{:U('News/index')}">新闻动态</a> > <a href="{:U('News/index',array('id'=>$menuDataInfo['id']))}">{$menuDataInfo['category_title']}</a></span></div>
+			<div class="main_right_content_content">
+				<ul id="newsList">
+					<foreach name="data" item="val">
+					<li><span>{$val['created']|date="Y-m-d",###}</span><a href="{:U('News/detail',array('id'=>$val['id']))}" target="_blank">·{$val['title']}</a></li>
+					</foreach>
+				</ul>
+				<div class="pages">{$pagerData['linkhtml']}</div>
+			</div>
+		</div>
+		<div class="right"></div>	
+	</div>
+</div>
+<include file="Common:footer" />

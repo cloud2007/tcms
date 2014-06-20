@@ -1,0 +1,26 @@
+<include file="Common:header" />
+
+<div class="clearH"></div>
+<div id="main">
+	<div class="main_left">
+		<div class="left"></div>
+		<div class="main_left_content">
+			<div class="title2">培训基地<i>peixun</i></div>
+			<ul class="ulList">
+				<foreach name="menuData" key="key" item="val">
+					<li><a href="{:U('Study/index',array('id'=>$val['id']))}" <if condition="$val['id'] == $data['id']">class="current"</if> >{$val['title']}</a><span>{$val['title2']}</span></li>
+				</foreach>
+			</ul>
+		</div>
+		<div class="right"></div>
+	</div>
+	<div class="main_right">
+		<div class="left"></div>
+		<div class="main_right_content">
+			<div class="title3">培训基地<span><a href="/">首页</a> > <a href="{:U('Study/index')}">关于我们</a> > <a href="{:U('Study/index',array('id'=>$data['id']))}">{$data['title']}</a></span></div>
+			<div class="main_right_content_content">{$data['content']|htmlspecialchars_decode}</div>
+		</div>
+		<div class="right"></div>	
+	</div>
+</div>
+<include file="Common:footer" />
