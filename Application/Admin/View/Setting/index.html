@@ -2,23 +2,25 @@
 <load href="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/js/SwfUpload/css/upload.css" />
 <load href="__PUBLIC__/{:C('ADMIN_THEME_PATH')}/js/KindEditor/kindeditor.js" />
 <div id="manager">
-	<h2 class="title">SEO 功 能 管 理</h2>
-	<p>管理导航：<a href="{:U('Seo/index')}">SEO管理</a>&nbsp;|&nbsp;<a href="javascript:;" class="addButton">添加一项</a></p>
+	<h2 class="title">系 统 参 数 管 理</h2>
+	<p>管理导航：<a href="{:U('Seo/index')}">系统参数管理</a>&nbsp;|&nbsp;<a href="javascript:;" class="addButton">添加一项</a></p>
 </div>
 <form name="addForm" id="addForm" method="post" action="{:U('Setting/index')}">
-	<table width="100%" class="content_table">
+	<table width="100%" class="content_table" id="Container">
 		<tr>
 			<td width="150">配置</td>
 			<td width="200">配置唯一标识</td>
 			<td>配置值</td>
 			<td width="150">操作</td>
 		</tr>
+		<foreach name="data" item="val">
 		<tr>
-			<td><input type="text" name="text[]" value="" style="width:80%" /></td>
-			<td><input type="text" name="key[]" value="" style="width:80%" /></td>
-			<td><input type="text" name="value[]" value="" style="width:80%" /></td>
-			<td><a class="delButton" href="javascript:;" onclick="delete();">删除</a</td>
+			<td><input type="text" name="text[]" value="{$val['text']}" style="width:80%" /></td>
+			<td><input type="text" name="key[]" value="{$val['key']}" style="width:80%" /></td>
+			<td><input type="text" name="value[]" value="{$val['value']}" style="width:80%" /></td>
+			<td><a class="delButton" href="javascript:;" onclick="delete();">删除</a></td>
 		</tr>
+		</foreach>
 	</table>
 	<div class="clearH"></div>
 	<table width="100%" class="content_table">
@@ -29,7 +31,7 @@
 </form>
 <script>
 $(".addButton").live('click',function(){
-	$('.content_table tr:last').append('<tr><td><input type="text" name="text[]" value="" style="width:80%" /></td><td><input type="text" name="key[]" value="" style="width:80%" /></td><td><input type="text" name="value[]" value="" style="width:80%" /></td><td><a class="delButton" href="javascript:;" onclick="delete();">删除</a</td></tr>');
+	$('#Container').append('<tr><td><input type="text" name="text[]" value="" style="width:80%" /></td><td><input type="text" name="key[]" value="" style="width:80%" /></td><td><input type="text" name="value[]" value="" style="width:80%" /></td><td><a class="delButton" href="javascript:;" onclick="delete();">删除</a</td></tr>');
 });
 
 $(".delButton").live('click',function(){

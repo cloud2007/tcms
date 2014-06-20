@@ -50,7 +50,7 @@ class UserController extends AdminController {
 		$map = array();
 		$map['deleted'] = array('EQ', 0);
 		$map['use'] = array('EQ', 1);
-		$map['id'] = array('NOT IN', array(1,5));
+		$map['id'] = array('NOT IN', array(1, 5));
 		$grantList = $model->where($map)->select();
 		$this->assign('grantList', $grantList);
 
@@ -62,7 +62,9 @@ class UserController extends AdminController {
 		!$id && $this->error(L('PARAMS_ERROR'), U('User/index'));
 		$grant = I('post.grant', '', 'intval');
 		$model = new \Common\Model\UserModel();
-		$model->where('`id`=' . $id)->setField('grant', $grant);
+		$data['id'] = $id;
+		$data['grant'] = $grant;
+		$model->data($data)->save();
 		$this->success(L('OPRATION_SUCCESS'), U('User/index'));
 	}
 

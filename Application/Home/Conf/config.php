@@ -29,7 +29,10 @@ return array(
 	'DATA_CACHE_TIME' => 3600, //
 
 	/* MEMBER AUTH */
-	'MEMBER_AUTH_CHECK' => '', //email , ''
+	'MEMBER_AUTH_CHECK' => 'email', //email , ''
 	'MEMBER_AUTH_LIMIT' => '600', // 激活邮件过期时间
+
+	/* CopyRight */
+	'DEFAUIT_SYSTEM_TITLE' => 'TcitCMS', // 默认的系统标题
 );
 ?>
