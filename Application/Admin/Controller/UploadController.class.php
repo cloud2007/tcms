@@ -17,7 +17,7 @@ class UploadController extends AdminController {
 	);
 
 	private function getConfig() {
-		if (session('lm_id') == 1) {
+		if (session('lm_id') == 999) {
 			$config = array(
 				'uploadPath' => '/test',
 				'watermark' => C('WATERMARK'),
@@ -37,7 +37,7 @@ class UploadController extends AdminController {
 	}
 
 	private function getMutilConfig() {
-		if (session('lm_id') == 1) {
+		if (session('lm_id') == 999) {
 			$config = array(
 				'uploadPath' => '/test',
 				'watermark' => C('WATERMARK'),
@@ -82,7 +82,7 @@ class UploadController extends AdminController {
 			'inputname' => 'imgFile',
 				//'allowFile' => Uploader::ALLOWFILE_IMAGE,
 		);
-		$uploader = new Uploader($config);
+		$uploader = new \Common\Org\Uploader($config);
 		echo $uploader->save();
 	}
 

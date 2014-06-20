@@ -172,7 +172,7 @@ class Uploader {
 		//下面两行为kindEditor返回数据
 		$result['error'] = $err ? 1 : 0;
 		$result['message'] = $err;
-		$result['url'] = str_replace(C('UPLOAD_PATH'), '', $msg);
+		$result['url'] = $msg;
 		//$result = array('err' => $err, 'url' => $msg, 'msg' => str_replace(UPLOAD_PATH, '', $msg));
 		return $json ? json_encode($result) : $result;
 	}

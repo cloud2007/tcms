@@ -11,9 +11,9 @@
 	<input type="hidden" name="PageNo" value="<?php echo $PageNo;?>" />
 	<table width="100%" class="content_table">
 		{:W('Tcms/showInput',array('title',$data,$menuData))}
-		
+
 		{:W('Tcms/showCategory',array('category',$data,$menuData))}
-		
+
 		{:W('Tcms/showInput',array('title1',$data,$menuData))}
 		{:W('Tcms/showInput',array('title2',$data,$menuData))}
 		{:W('Tcms/showInput',array('title3',$data,$menuData))}
@@ -24,20 +24,20 @@
 		{:W('Tcms/showInput',array('title8',$data,$menuData))}
 		{:W('Tcms/showInput',array('title9',$data,$menuData))}
 		{:W('Tcms/showInput',array('title10',$data,$menuData))}
-		
+
 		{:W('Tcms/showTextarea',array('name1',$data,$menuData))}
 		{:W('Tcms/showTextarea',array('name2',$data,$menuData))}
 		{:W('Tcms/showTextarea',array('name3',$data,$menuData))}
 		{:W('Tcms/showTextarea',array('name4',$data,$menuData))}
 		{:W('Tcms/showTextarea',array('name5',$data,$menuData))}
-		
+
 		{:W('Tcms/showEditorContent',array('content',$data,$menuData))}
 		{:W('Tcms/showEditorContent',array('content1',$data,$menuData))}
 		{:W('Tcms/showEditorContent',array('content2',$data,$menuData))}
 		{:W('Tcms/showEditorContent',array('content3',$data,$menuData))}
 		{:W('Tcms/showEditorContent',array('content4',$data,$menuData))}
 		{:W('Tcms/showEditorContent',array('content5',$data,$menuData))}
-		
+
 		{:W('Tcms/showRadio',array('is_tj',$data,$menuData))}
 		{:W('Tcms/showRadio',array('is_gd',$data,$menuData))}
 		{:W('Tcms/showRadio',array('is_ab',$data,$menuData))}
@@ -46,7 +46,7 @@
 		{:W('Tcms/showRadio',array('is_gh',$data,$menuData))}
 		{:W('Tcms/showRadio',array('is_jk',$data,$menuData))}
 		{:W('Tcms/showRadio',array('is_mn',$data,$menuData))}
-		
+
 		{:W('Tcms/showUploadSingle',array('smallpic',$data,$menuData))}
 		{:W('Tcms/showUploadSingle',array('bigpic',$data,$menuData))}
 		{:W('Tcms/showUploadSingle',array('upload1',$data,$menuData))}
@@ -54,9 +54,9 @@
 		{:W('Tcms/showUploadSingle',array('upload3',$data,$menuData))}
 		{:W('Tcms/showUploadSingle',array('upload4',$data,$menuData))}
 		{:W('Tcms/showUploadSingle',array('upload5',$data,$menuData))}
-		
+
 		{:W('Tcms/showUploadMulti',array('multipic',$data,$menuData))}
-		
+
 		{:W('Tcms/showCreated',array('created',$data,$menuData))}
 	</table>
 	<div class="clearH"></div>
@@ -75,8 +75,8 @@ $(function(){
 	var items = ['source','undo','redo','fontsize','|','forecolor', 'hilitecolor', 'bold', 'italic', 'underline','removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright','|', 'emoticons', 'image', 'multiimage', 'link'];
 	KindEditor.ready(function(K) {
 		K.create('textarea[class="content"]', {
-			uploadJson : '/admin.php/upload/kindEditor',
-			fileManagerJson : '/admin.php/upload/fileManager',
+			uploadJson : '/admin/upload/kindEditor',
+			fileManagerJson : '/admin/upload/fileManager',
 			urlType : 'absolute',
 			allowFileManager : true,
 			//afterBlur:function(){},

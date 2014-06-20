@@ -53,7 +53,7 @@ $(document).ready(function() {
 				}
 		}
 	});
-	
+
 	$('.list_img').each(function(){
 		var button = $(this).parent().find(".default_box");
 		if(button.find("a").text()=='默认图片'){
@@ -61,7 +61,7 @@ $(document).ready(function() {
 		}else{
 			button.hide();
 		}
-		
+
 	});
 
 })//DOCUMENT END
@@ -215,7 +215,7 @@ function uploadMulti(buttonName){
 							if(json['err']){
 								//alert(json['err']);
 								$('#'+ID).remove();
-							}else{	
+							}else{
 								$('#'+buttonName).val(json['msg']);
 								$('#'+ID).html('<div class="list_img"><a href="' + json['real_path']+'" target="_blank"><img src="' + json['real_path']+'" /></a></div>');
 								$('#'+ID).append('<input type="text" class="multiInputTitle" name="multiTitle[]" />');
