@@ -9,7 +9,7 @@
 
 namespace Admin\Controller;
 
-class UploadController extends AdminController {
+class UploadController extends CommonController {
 
     protected static $defaultconfig = array(
         'uploadPath' => '',

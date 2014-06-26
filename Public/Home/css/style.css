@@ -1,36 +1,14 @@
 @charset "utf-8";
 body{padding:0; margin:0 auto; font:12px/24px "Courier New",Microsoft Yahei,"宋体"; background:#FFF; color:#666; padding:2px;}
-input,textarea,select{ font:12px "Courier New",Microsoft Yahei,"宋体"; color:#666;}
 
+a{ text-decoration:none; color:#666}
 a.red{ text-decoration:none; color:#FF0000}
 a.ccc{ text-decoration:none; color:#CCCCCC}
-
-#postion{ height:30px; background:#FFFFFF; line-height:30px; padding:0 0 0 20px;}
-
-#postion a{background-image: url('../images/breadcrumb.png'); padding:0 10px 0 0; background-position: center right;background-repeat: no-repeat;}
-
-#manager{ border:1px solid #CFCFCF; margin:0 0 10px 0}
-h2.title{background:url(../images/newlinebg3.gif);line-height:36px;color: #000;text-align:center; font-size:14px; font-weight:normal}
-#manager p{ line-height:30px; padding:0 0 0 10px;}
-#manager p span{float:right; padding:5px 10px 0 0;}
-#manager p input{ margin:0 3px;}
-
-table.content_table{ border-collapse:collapse;}
-table.content_table td{border: 1px solid #CFCFCF; height:35px; padding:0 2px; text-align:center}
-table.content_table td.textleft{text-align:left; padding:10px}
-table.content_table td.textleftlist{text-align:left; padding:0 10px}
-table.content_table td.textarea{text-align:left; padding:10px}
-table.content_table tr.title td{background:url(../images/newlinebg3.gif);line-height:35px; color: #000;text-align:center; font-size:14px; font-weight:normal}
-table.content_table_left td{text-align:left; padding:0 0 0 10px; line-height:35px;}
-.pages td{ text-align:right; padding:0 20px 0 0}
-
-table.content_table input{ line-height:20px; outline:none}
+.left{ float:left;}
+.right{ float:right}
 
 .pages a {padding: 0 5px; display: inline-block; height: 20px;text-align: center; margin:0 1px;line-height: 20px;cursor: pointer;}
 .pages a:hover{ color:#ff0000; text-decoration:underline}
 .pages .current {color:#eb6100;width: 22px;text-align: center; display: inline-block;}
 
-.search{ padding:1px 3px;}
-
-
-
+#header{ width:1000px;}

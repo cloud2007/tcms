@@ -3,6 +3,15 @@
 #RewriteRule ^(.*)$ http://tcms.chofn.com/$1 [L,R=301]
 #for rewrite no www domain
 
-RewriteEngine on
-RewriteCond $1 !^(index\.php|Public)
-RewriteRule ^(.*)$ index.php/$1 [L]
+#RewriteEngine on
+#RewriteCond $1 !^(index\.php|Public)
+#RewriteRule ^(.*)$ index.php/$1 [L]
+
+<IfModule mod_rewrite.c>
+  Options +FollowSymlinks
+  RewriteEngine On
+
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+</IfModule>

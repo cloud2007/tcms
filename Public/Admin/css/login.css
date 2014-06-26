@@ -3,10 +3,10 @@ body{ background:#FFFEFC;}
 .header{ width:900px; margin:0 auto; margin-top:50px;}
 
 .main{width:900px; margin:0 auto; margin-top:25px;}
-.main .login_picture{ height:420px; background:url(../Images/login_pic.jpg) no-repeat -15px center;}
+.main .login_picture{ height:420px; background:url(../images/login_pic.jpg) no-repeat -15px center;}
 .main .login_box{ border:1px solid #F4EDE4; background:#FFF; width:350px; height:300px; position:relative; float:right; margin-top:40px; -moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px; padding-top:20px;}
-.main .login_box input{ border:#EFEDED 1px solid; -moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px; width:230px; height:50px; line-height:50px; margin:0 auto; display:block; margin-top:25px; padding: 0 0 0 40px; background:url(../Images/login_user_info.png) no-repeat 15px center;}
-.main .login_box input.login_pwd{ background:url(../Images/login_user_pwd.png) no-repeat 15px center;}
+.main .login_box input{ border:#EFEDED 1px solid; -moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px; width:230px; height:50px; line-height:50px; margin:0 auto; display:block; margin-top:25px; padding: 0 0 0 40px; background:url(../images/login_user_info.png) no-repeat 15px center;}
+.main .login_box input.login_pwd{ background:url(../images/login_user_pwd.png) no-repeat 15px center;}
 .main .login_box a.login_btn{ text-align:center; font-size:24px; color:#FFF; -moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px; width:270px; height:50px; line-height:50px; margin:0 auto; display:block; margin-top:25px; background:#DD6823; font-family:"Microsoft YaHei";}
 .main .login_box a.login_btn:hover{ background:#CE6026;}
 .main .login_box span{width:270px; height:25px; line-height:25px; margin:0 auto; display:block; margin-top:20px; text-align:center;}
@@ -24,9 +24,9 @@ body{ background:#FFFEFC;}
 
 .login_text{width:900px; margin:0 auto; margin-top:5px; overflow:hidden;}
 .login_text ul{ width:110%;}
-.login_text ul span{ width:25%; display:inline-block; padding-left:70px; color:#999; font-size:12px; background:url(../Images/login_icon01.png) no-repeat left center;}
-.login_text ul span.text02{ background:url(../Images/login_icon02.png) no-repeat left center;}
-.login_text ul span.text03{ background:url(../Images/login_icon03.png) no-repeat left center;}
+.login_text ul span{ width:25%; display:inline-block; padding-left:70px; color:#999; font-size:12px; background:url(../images/login_icon01.png) no-repeat left center;}
+.login_text ul span.text02{ background:url(../images/login_icon02.png) no-repeat left center;}
+.login_text ul span.text03{ background:url(../images/login_icon03.png) no-repeat left center;}
 .login_text ul span em{ font-size:14px; font-family:"Microsoft YaHei"; line-height:30px; display:block; text-align:left; color:#333; font-weight:normal;}
 .footer{ width:900px; margin:0 auto; margin-top:25px; overflow:hidden; text-align:center; border-top:1px solid #EFEDED; margin-top:45px; padding-top:35px; color:#666;padding-bottom: 20px;}
 .footer a{ line-height:30px; color:#666;}

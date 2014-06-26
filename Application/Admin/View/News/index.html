@@ -22,7 +22,7 @@
 		<td><b>{$menuData['title']}</b></td>
 		<if condition="in_array('category',$menuData['allow_field'])"><td><b>{$menuData['category']}</b></td></if>
 		<td><b>属　　性</b></td>
-		<td><b>{$menuData['hits']}</b></td>
+		<if condition="in_array('hits',$menuData['allow_field'])"><td><b>{$menuData['hits']}</b></td></if>
 		<if condition="$menuData['sort']==1"><td><b>排序</b></td></if>
 		<td><b>{$menuData['created']}</b></td>
 		<td><b>单项操作</b></td>
@@ -34,7 +34,7 @@
 		<td>{$val['title']}</td>
 		<if condition="in_array('category',$menuData['allow_field'])"><td>{$val['categoryHtml']}</td></if>
 		<td>{$val['attributeHtml']}</td>
-		<td>{$val['hits']}</td>
+		<if condition="in_array('hits',$menuData['allow_field'])"><td>{$val['hits']}</td></if>
 		<if condition="$menuData['sort']==1"><td>{$val['sort']}</td></if>
 		<td>{$val['created']|date="Y-m-d",###}</td>
 		<td><a href="{:U('News/add',array('id'=>$val['id']))}">修改</a>|<a href="javascript:if (confirm('确定删除?')) location='{:U('News/delete',array('id'=>$val['id']))}'">删除</a></td>

@@ -42,7 +42,7 @@ class MenuModel extends CommonModel {
 				$menuList[$k]['son'] = $this->where($map)->order($order)->select();
 			}
 		} elseif (in_array(0, $user['grantArray'])) {
-			$map['id'] = array('GT', 7);
+			$map['id'] = array('NOT IN', array(1,2,5));
 			$menuList = $this->where($map)->order($order)->group('lm_name')->select();
 			foreach ($menuList as $k => $v) {
 				$map['lm_name'] = array('EQ', $v['lm_name']);
