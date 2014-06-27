@@ -12,7 +12,7 @@ li{list-style:outside;list-style:none;}
 .clear{ clear:both; height:0px; overflow:hidden}
 .clearh{ clear:both; height:5px; overflow:hidden}
 .clearH{ clear:both; height:10px; overflow:hidden}
-input, textarea, select { vertical-align:middle; }
+input, textarea, select { vertical-align:middle; outline:none}
 input[type="radio"],input[type="checkbox"]{margin:-4px 0 0 0}
 
 .alt{background:#F7F7F7;}

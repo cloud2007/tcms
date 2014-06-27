@@ -3060,7 +3060,7 @@ _extend(KCmd, {
 		return self.select();
 	},
 	bold : function() {
-		return this.toggle('<strong></strong>', {
+		return this.toggle('<b></b>', {
 			span : '.font-weight=bold',
 			strong : '*',
 			b : '*'
