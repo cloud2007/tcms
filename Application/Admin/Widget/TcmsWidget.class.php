@@ -227,8 +227,8 @@ class TcmsWidget extends \Think\Controller {
             $returnStr .= $menuData[$field];
             $returnStr .= '</td><td class="textleft">';
             $returnStr .= '<div id="' . $field . 'Div"><ul>';
-            if (is_file(APP_ROOT . C('UPLOAD_PATH') . $data[$field]))
-                $returnStr .= '<li class="wait"><a href="' . C('UPLOAD_PATH') . $data[$field] . '" target="_blank"><img src="' . C('UPLOAD_PATH') . $data[$field] . '"></a><input type="hidden" name="upload1" value="' . $newsinfo->$field . '"><span class="closed"></span></li>';
+            if (is_file(APP_ROOT . $data[$field]))
+                $returnStr .= '<li class="wait"><a href="' . $data[$field] . '" target="_blank"><img src="' . $data[$field] . '"></a><input type="hidden" name="upload1" value="' . $newsinfo->$field . '"><span class="closed"></span></li>';
             $returnStr .= '<li class="uploadButtonDiv" id="' . $field . 'ButtonDiv"><input id="' . $field . 'Button" type="file" name="file" size="1"/></li>
 </ul></div>';
             $returnStr .='</td></tr>';
@@ -252,8 +252,8 @@ class TcmsWidget extends \Think\Controller {
                 foreach ($picArray as $value) {
                     $picInfoArray = explode('|', $value);
                     $defaultText = $picInfoArray[3] == 1 ? "默认图片" : "设为默认图";
-                    if (is_file(APP_ROOT . C('UPLOAD_PATH') . $picInfoArray[1]))
-                        $returnStr .= '<li class="waits"><div class="list_img"><a href="' . C('UPLOAD_PATH') . $picInfoArray[1] . '" target="_blank"><img src="' . C('UPLOAD_PATH') . $picInfoArray[1] . '"></a></div><input type="text" class="multiInputTitle" name="multiTitle[]" value="' . $picInfoArray[2] . '" /><input type="text" class="multiInputOrder" name="multiOrder[]" value="' . $picInfoArray[0] . '" /><input type="hidden" name="multiUrl[]" value="' . $picInfoArray[1] . '" /><input type="hidden" name="multiDefault[]" value="' . $picInfoArray[3] . '"><div class="default_box" style="display: none;"><span class="default_picbg"></span><span class="default_pictext"><a>' . $defaultText . '</a></span></div><span class="closed"></span></li>';
+                    if (is_file(APP_ROOT . $picInfoArray[1]))
+                        $returnStr .= '<li class="waits"><div class="list_img"><a href="' . $picInfoArray[1] . '" target="_blank"><img src="' . $picInfoArray[1] . '"></a></div><input type="text" class="multiInputTitle" name="multiTitle[]" value="' . $picInfoArray[2] . '" /><input type="text" class="multiInputOrder" name="multiOrder[]" value="' . $picInfoArray[0] . '" /><input type="hidden" name="multiUrl[]" value="' . $picInfoArray[1] . '" /><input type="hidden" name="multiDefault[]" value="' . $picInfoArray[3] . '"><div class="default_box" style="display: none;"><span class="default_picbg"></span><span class="default_pictext"><a>' . $defaultText . '</a></span></div><span class="closed"></span></li>';
                 }
             }
             $returnStr .= '<li class="uploadButtonDiv" id="multipicButtonDiv"><input id="multipicButton" type="file" name="file" size="1"/></li>

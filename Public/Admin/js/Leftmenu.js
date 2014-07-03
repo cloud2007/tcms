@@ -71,7 +71,7 @@ function setCookie(c_name,value,expiredays)
 var totalitem = 10;//最多展开五个选项卡
 function CheckOpenMenu()
 {
-
+	return false;
 	var ckstr = getCookie('menuitems');
 	var curitem = '';
 	var curobj = null;
