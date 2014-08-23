@@ -138,8 +138,8 @@
 			<td><input name="allow_field[]" type="checkbox" value="hits" {:in_array('hits',$data['allow_field'])?'checked="checked"':''} />
 				<input name="hits" type="text" value="{$data['hits']}">
 				字段名：hits</td>
-			<td><input name="allow_field[]" type="checkbox" value="created" {:in_array('created',$data['allow_field'])?'checked="checked"':''} />
-				<input name="created" type="text" value="{$data['created']}">
+			<td><input name="allow_field[]" type="checkbox" value="created" checked="checked" />
+				<input name="created" type="text" value="{$data['created'] ? $data['created'] : '创建时间'}">
 				字段名：created</td>
 		</tr>
 	</table>

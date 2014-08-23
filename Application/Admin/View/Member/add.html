@@ -19,6 +19,10 @@
 			<td class="textleft"><input type="text" name="realname" value="{$data['realname']}" size="50" /></td>
 		</tr>
 		<tr>
+			<td width="100">登录密码</td>
+			<td class="textleft"><input type="text" name="password" value="" size="50" />(留空不修改)</td>
+		</tr>
+		<tr>
 			<td width="100">性别</td>
 			<td class="textleft"><input type="radio" name="sex" value="0" <equal name="data['sex']" value="0">checked="checked"</equal>> 保密　<input type="radio" name="sex" value="1" <equal name="data['sex']" value="1">checked="checked"</equal>> 男　<input type="radio" name="sex" value="2" <equal name="data['sex']" value="2">checked="checked"</equal>> 女</td>
 		</tr>
@@ -48,11 +52,11 @@
 		</tr>
 		<tr>
 			<td width="100">激活状态</td>
-			<td class="textleft"><input type="radio" name="status" value="0" <equal name="data['status']" value="0">checked="checked"</equal>> 未激活　<input type="radio" name="status" value="1" <equal name="data['status']" value="1">checked="checked"</equal>> 已激活</td>
+			<td class="textleft"><input type="radio" name="status" value="1" checked="checked"> 已激活　<input type="radio" name="status" value="0" <equal name="data['status']" value="0">checked="checked"</equal>> 未激活</td>
 		</tr>
 		<tr>
 			<td width="100">锁定状态</td>
-			<td class="textleft"><input type="radio" name="locked" value="0" <equal name="data['locked']" value="0">checked="checked"</equal>> 正常　<input type="radio" name="locked" value="{:NOW_TIME}" <gt name="data['locked']" value="1">checked="checked"</gt>> 锁定</td>
+			<td class="textleft"><input type="radio" name="locked" value="0" checked="checked"> 正常　<input type="radio" name="locked" value="{:NOW_TIME}" <gt name="data['locked']" value="1">checked="checked"</gt>> 锁定</td>
 		</tr>
 	</table>
 	<div class="clearH"></div>

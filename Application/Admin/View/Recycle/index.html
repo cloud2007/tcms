@@ -1,30 +1,16 @@
 <include file="Common:header" />
 <div id="manager">
 	<h2 class="title">菜 单 功 能 管 理</h2>
-	<p>管理导航：<a href="{:U('Recycle/index')}">回收站管理</a>
-	<span>
-		<input type="hidden" name="target" id="target" value="{:U('News/index')}" />
-		<select name="category" id="category">
-			<option value="0">----请选择----</option>
-			<foreach name="cateData" item="v">
-				<option value="{$v['id']}" <if condition="$v['id']==I('get.category','','intval')">selected = "selected"</if>>{$v['category_title']}</option>
-			</foreach>
-		</select>
-		<input type="text" name="wd" id="wd" value="{:I('get.wd','','trim')}" /><input name="search" type="button" value="快速检索" class="search" />
-	</span>
-	</p>
+	<p>管理导航：<a href="{:U('Recycle/index')}">回收站管理</a></p>
 </div>
 <form name="listForm" id="listForm" method="post" action="{:U('News/delete')}">
 <table width="100%" class="content_table">
 	<tr class="title">
 		<td><input type="checkbox" id="checkAll"> 全选</td>
 		<td><b>ID</b></td>
-		<td><b>{$menuData['title']}</b></td>
-		<if condition="in_array('category',$menuData['allow_field'])"><td><b>{$menuData['category']}</b></td></if>
-		<td><b>属　　性</b></td>
-		<if condition="in_array('hits',$menuData['allow_field'])"><td><b>{$menuData['hits']}</b></td></if>
-		<if condition="$menuData['sort']==1"><td><b>排序</b></td></if>
-		<td><b>{$menuData['created']}</b></td>
+		<td><b>title</b></td>
+		<td><b>created</b></td>
+		<td><b>deleted</b></td>
 		<td><b>单项操作</b></td>
 	</tr>
 	<foreach name="data" item="val">
@@ -32,12 +18,9 @@
 		<td><input name="id[]" type="checkbox" value="{$val['id']}"></td>
 		<td>{$val['id']}</td>
 		<td>{$val['title']}</td>
-		<if condition="in_array('category',$menuData['allow_field'])"><td>{$val['categoryHtml']}</td></if>
-		<td>{$val['attributeHtml']}</td>
-		<if condition="in_array('hits',$menuData['allow_field'])"><td>{$val['hits']}</td></if>
-		<if condition="$menuData['sort']==1"><td>{$val['sort']}</td></if>
 		<td>{$val['created']|date="Y-m-d",###}</td>
-		<td><a href="{:U('News/add',array('id'=>$val['id']))}">修改</a>|<a href="javascript:if (confirm('确定删除?')) location='{:U('News/delete',array('id'=>$val['id']))}'">删除</a></td>
+		<td>{$val['deleted']|date="Y-m-d",###}</td>
+		<td><a href="{:U('Recycle/remove',array('id'=>$val['id']))}">还原</a>|<a href="javascript:if (confirm('确定删除?')) location='{:U('News/delete',array('id'=>$val['id']))}'">删除</a></td>
 	</tr>
 	</foreach>
 	<tr>
